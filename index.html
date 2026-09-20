@@ -1,0 +1,3070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Group Nelly (G3) | Dual-Waste Valorization IMRAD Proposal Engine — Water Hyacinth + Rice Straw → Bio-Sponge, Paper/Foam, Compost, Modelled Biogas & Sensory Acceptance (Chalermkwansatree SMBP 2.4)</title>
+<style>
+:root {
+  --uf-navy: #0021A5;
+  --uf-orange: #FA4616;
+  --springer-blue: #004d80;
+  --academic-navy: #0d2137;
+  --academic-gold: #c5a059;
+  --parchment-bg: #FAF8F5;
+  --card-bg: #FFF;
+  --border-color: #d1c7b7;
+  --text-primary: #222;
+  --text-secondary: #4a4a4a;
+  --correct-green: #2e7d32;
+  --incorrect-red: #c62828;
+  --warning-amber: #e65100;
+  --accent-blue: #1a73e8;
+  --nelly-teal: #00897b;
+  --nelly-leaf: #43a047;
+  --shadow-soft: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-hard: 0 8px 30px rgba(13,33,55,0.15);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Times New Roman", Times, "Liberation Serif", serif;
+  background: var(--parchment-bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-size: 16px;
+  padding-bottom: 100px;
+}
+
+/* TOP STATUS & CONTROL BAR */
+.top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: linear-gradient(135deg, var(--academic-navy), #173456);
+  color: #fff;
+  padding: 8px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+  border-bottom: 3px solid var(--academic-gold);
+}
+.top-bar-title {
+  font-size: 14.5px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.gemini-badge-top {
+  background: linear-gradient(135deg, var(--nelly-teal), #2e7d32);
+  color: #fff;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-weight: bold;
+  border: 1px solid rgba(255,255,255,0.4);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.condition-pill {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  border: 1px solid var(--academic-gold);
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.autosave-pill {
+  font-size: 11px;
+  color: #81c784;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(0,0,0,0.25);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.timer-badge {
+  background: #fff;
+  color: var(--academic-navy);
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-size: 17px;
+  font-weight: bold;
+  border: 2px solid var(--academic-gold);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 135px;
+  justify-content: center;
+  font-variant-numeric: tabular-nums;
+}
+.timer-badge.warning { background: #fff3e0; color: var(--warning-amber); border-color: #ff9800; }
+.timer-badge.danger { background: #ffebee; color: #b71c1c; border-color: #f44336; animation: pulse 1.2s infinite; }
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+
+/* BUTTONS */
+.btn {
+  font-family: "Times New Roman", Times, serif;
+  padding: 7px 14px;
+  font-size: 13.5px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  border: none;
+}
+.btn-gold { background: linear-gradient(180deg, #dfb96c, #c5a059); color: #0d2137; border: 1px solid #9c7c36; }
+.btn-gold:hover { background: #b5924b; }
+.btn-navy { background: var(--academic-navy); color: #fff; border: 1px solid var(--academic-gold); }
+.btn-navy:hover { background: #173456; }
+.btn-pdf { background: linear-gradient(180deg, #b71c1c, #880e4f); color: #fff; border: 1px solid #5f0937; }
+.btn-pdf:hover { background: #880e4f; box-shadow: 0 3px 10px rgba(183,28,28,0.35); }
+.btn-report { background: linear-gradient(180deg, #004d80, #002f4f); color: #fff; border: 1px solid #002239; }
+.btn-report:hover { background: #00385c; }
+.btn-teacher { background: #4a148c; color: #fff; border: 1px solid #7b1fa2; font-size: 12px; padding: 5px 10px; }
+.btn-teacher:hover { background: #6a1b9a; }
+.btn-help-teacher { background: #e65100; color: #fff; border: 1px solid #bf360c; font-size: 12px; padding: 5px 10px; border-radius: 20px; }
+.btn-help-teacher:hover { background: #bf360c; }
+.btn-unlock { background: linear-gradient(180deg, var(--nelly-teal), #00695c); color: #fff; border: 1px solid #004d40; font-size: 15px; padding: 9px 20px; }
+.btn-unlock:hover { background: #00695c; }
+.btn-asset { background: #fff; color: #0d47a1; border: 1.5px solid #90caf9; font-size: 12px; padding: 3px 8px; border-radius: 3px; cursor: pointer; }
+.btn-asset:hover { background: #e3f2fd; border-color: #1976d2; }
+.btn-custom-sub { background: #fdfbf7; color: #6a4f10; border: 1.5px dashed #c5a059; font-size: 13px; padding: 4px 10px; border-radius: 3px; cursor: pointer; }
+.btn-custom-sub:hover { background: #f7eedb; }
+
+/* NAVIGATION STRIP */
+.imrad-nav-strip {
+  background: #fff;
+  border-bottom: 2px solid var(--border-color);
+  padding: 8px 20px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  overflow-x: auto;
+  position: sticky;
+  top: 51px;
+  z-index: 990;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.tab-btn {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 6px 13px;
+  border: 1px solid #d1c7b7;
+  background: #fdfbf7;
+  color: #444;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.tab-btn:hover:not(.locked) { background: #f0ece1; color: var(--academic-navy); }
+.tab-btn.active { background: var(--academic-navy)!important; color: #fff!important; border-color: var(--academic-gold)!important; box-shadow: 0 2px 6px rgba(13,33,55,0.25); }
+.tab-btn.completed { border-color: #2e7d32; background: #e8f5e9; color: #1b5e20; }
+.tab-btn.locked { background: #eee; color: #999; border-color: #ccc; cursor: not-allowed; opacity: 0.65; }
+.tab-btn .tab-time { font-size: 11px; opacity: 0.85; background: rgba(0,0,0,0.08); padding: 1px 5px; border-radius: 10px; }
+.tab-btn.active .tab-time { background: rgba(255,255,255,0.2); color: #fff; }
+
+/* CONTAINER & LAYOUT */
+.container {
+  max-width: 1360px;
+  margin: 20px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 25px;
+}
+@media (max-width: 1080px) { .container { grid-template-columns: 1fr; } }
+
+.paper {
+  background: var(--card-bg);
+  border: 2px solid var(--border-color);
+  box-shadow: var(--shadow-soft);
+  padding: 35px;
+  border-radius: 4px;
+  position: relative;
+}
+.paper::before {
+  content: "";
+  position: absolute;
+  top: 6px; left: 6px; right: 6px; bottom: 6px;
+  border: 1px solid rgba(197,160,89,0.35);
+  pointer-events: none;
+}
+
+/* MANUSCRIPT HEADER */
+.manuscript-header {
+  text-align: center;
+  border-bottom: 2px solid var(--academic-navy);
+  padding-bottom: 20px;
+  margin-bottom: 25px;
+}
+.springer-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--nelly-teal), #2e7d32);
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 3px 10px;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.manuscript-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #111;
+  line-height: 1.35;
+  margin-bottom: 12px;
+}
+.manuscript-authors { font-size: 14.5px; font-weight: bold; color: #333; margin-bottom: 4px; }
+.manuscript-affiliations { font-size: 13px; color: #666; font-style: italic; margin-bottom: 12px; }
+
+/* SECTIONS */
+.imrad-section { display: none; }
+.imrad-section.active { display: block; animation: fadeIn 0.3s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+.section-title-bar {
+  background: linear-gradient(90deg, var(--academic-navy), #173456);
+  color: #fff;
+  padding: 12px 18px;
+  margin: 25px 0 15px;
+  border-left: 6px solid var(--academic-gold);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 2px;
+}
+.section-title-bar h2 { font-size: 17px; letter-spacing: 0.5px; }
+
+.section-toolbar {
+  background: #f0f6ff;
+  border: 1px solid #c5ddff;
+  padding: 10px 14px;
+  border-radius: 4px;
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.toolbar-label { font-size: 13px; font-weight: bold; color: #0d47a1; display: flex; align-items: center; gap: 5px; }
+.toolbar-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+
+/* SUBSECTION BLOCK & IN-SITU AI SPOTTER */
+.subsection-block {
+  background: #fff;
+  border: 1.5px solid #dcd4c7;
+  border-radius: 4px;
+  padding: 16px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+  position: relative;
+}
+.subsection-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  border-bottom: 1px dashed #d1c7b7;
+  padding-bottom: 6px;
+}
+.subsection-title {
+  font-size: 14.5px;
+  font-weight: bold;
+  color: var(--academic-navy);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.sub-controls { display: flex; gap: 4px; flex-wrap: wrap; }
+.sub-icon-btn {
+  background: #fdfaf3;
+  border: 1px solid #d1c7b7;
+  color: #555;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.sub-icon-btn:hover { background: #0d2137; color: #fff; border-color: #0d2137; }
+
+/* IN-SITU EMBEDDED AI SPOTTER BOX */
+.inline-ai-spotter {
+  background: #f4f8fd;
+  border: 1.5px solid #bcd7f5;
+  border-radius: 4px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+}
+.spotter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 12.5px;
+}
+.spotter-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 11.5px;
+}
+.status-flow { background: #e8f5e9; color: #1b5e20; border: 1px solid #a5d6a7; }
+.status-reflection { background: #fff8e1; color: #f57f17; border: 1px solid #ffe082; }
+.status-hesitation { background: #fff3e0; color: #e65100; border: 1px solid #ffcc80; }
+.status-struggle { background: #ffebee; color: #b71c1c; border: 1px solid #ef9a9a; animation: pulse 1.5s infinite; }
+.status-offloading { background: #fce4ec; color: #880e4f; border: 1px solid #f48fb1; }
+.status-standby { background: #f5f5f5; color: #777; border: 1px solid #ddd; }
+
+.inline-ai-spotter.spotter-active {
+  border-color: var(--nelly-teal) !important;
+  box-shadow: 0 0 0 2px rgba(0,137,123,0.18) !important;
+  background: #eef9f7 !important;
+}
+
+.spotter-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.spotter-btn {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 11.5px;
+  font-weight: bold;
+  padding: 4px 9px;
+  border-radius: 3px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.spotter-btn-l1 { background: #e3f2fd; color: #0d47a1; border-color: #90caf9; }
+.spotter-btn-l1:hover { background: #bbdefb; }
+.spotter-btn-l2 { background: #fff3e0; color: #e65100; border-color: #ffb74d; }
+.spotter-btn-l2:hover { background: #ffe0b2; }
+.spotter-btn-l3 { background: #fce4ec; color: #880e4f; border-color: #f48fb1; }
+.spotter-btn-l3:hover { background: #f8bbd0; }
+.spotter-btn-l4 { background: #e8f5e9; color: #1b5e20; border-color: #a5d6a7; }
+.spotter-btn-l4:hover { background: #c8e6c9; }
+.spotter-btn-shape { background: linear-gradient(135deg, #6a1b9a, #4a148c); color: #fff; border: 1px solid #4a148c; }
+.spotter-btn-shape:hover { background: #4a148c; }
+
+/* STAGE 1 METADATA INPUTS */
+.meta-label { display: block; font-size: 12.5px; font-weight: bold; color: var(--academic-navy); margin-bottom: 3px; }
+.meta-text {
+  font-family: "Times New Roman", Times, serif;
+  font-size: 14px;
+  border: 1.5px solid #b5a995;
+  border-radius: 4px;
+  background: #fff;
+  color: #111;
+  width: 100%;
+}
+.meta-text:focus { outline: none; border-color: var(--academic-navy); box-shadow: 0 0 0 3px rgba(13,33,55,0.12); }
+.meta-text::placeholder { color: #888; font-style: italic; font-size: 13px; }
+
+/* 2x2 CONDITION GATING */
+.spotter-btn.gated {
+  opacity: 0.45;
+  filter: grayscale(0.75);
+  pointer-events: none;
+  cursor: not-allowed;
+}
+.cond-note {
+  font-size: 11.5px;
+  color: #b71c1c;
+  background: #fff3e0;
+  border: 1px dashed #ff9800;
+  padding: 3px 8px;
+  border-radius: 3px;
+  margin-top: 6px;
+  display: inline-block;
+  font-weight: bold;
+}
+
+/* EMBEDDED SPRINGER-STYLE FIGURES */
+.default-figure {
+  background: #fff;
+  border: 1.5px solid #d1c7b7;
+  border-radius: 4px;
+  padding: 12px;
+  margin: 15px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  page-break-inside: avoid;
+}
+.default-figure svg { width: 100%; height: auto; display: block; font-family: "Times New Roman", Times, serif; }
+.springer-fig-caption { font-weight: bold; font-size: 13px; margin-top: 8px; color: #222; text-align: left; }
+
+/* DUAL THEORETICAL PILLAR CARDS */
+.theory-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+@media (max-width: 900px) { .theory-grid { grid-template-columns: 1fr; } }
+.theory-card { border: 1.5px solid #b2d4ff; border-radius: 4px; padding: 14px; background: #f0f7ff; font-size: 13px; color: #333; }
+.theory-card.alt { background: #fdf6ec; border-color: #e6cfa3; }
+.theory-card h4 { font-size: 14px; color: var(--academic-navy); margin-bottom: 6px; }
+
+/* STUDY PROGRAM MAP */
+.study-map-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 6px; }
+@media (max-width: 900px) { .study-map-grid { grid-template-columns: 1fr; } }
+.study-map-card { border: 1.5px solid #dcd4c7; border-radius: 4px; padding: 10px 12px; background: #fbf9f5; font-size: 12.5px; color: #444; }
+.study-map-card h4 { font-size: 13px; color: var(--academic-navy); margin-bottom: 4px; }
+.study-map-card.current { border: 2px solid var(--nelly-teal); background: #eef9f7; }
+.study-map-card.current h4 { color: var(--nelly-teal); }
+
+/* INLINE SPOTTER RESPONSE CARD */
+.spotter-response-area {
+  margin-top: 8px;
+  background: #fff;
+  border: 1px solid #cbdff2;
+  border-left: 3px solid var(--nelly-teal);
+  padding: 8px 12px;
+  border-radius: 3px;
+  font-size: 13px;
+  color: #004d40;
+  display: none;
+  animation: fadeIn 0.2s ease;
+}
+
+/* TEXTAREA & METRICS */
+.editor-textarea {
+  width: 100%;
+  min-height: 150px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 15px;
+  line-height: 1.6;
+  padding: 12px;
+  border: 1.5px solid #b5a995;
+  border-radius: 4px;
+  background: #fff;
+  color: #111;
+  resize: vertical;
+  transition: border-color 0.2s, box-shadow 0.2s, background-color 0.3s;
+}
+.editor-textarea:focus {
+  outline: none;
+  border-color: var(--academic-navy);
+  box-shadow: 0 0 0 3px rgba(13,33,55,0.12);
+}
+.editor-textarea.paste-blocked {
+  border-color: #d32f2f!important;
+  background: #ffebee!important;
+  box-shadow: 0 0 0 4px rgba(211,47,47,0.25)!important;
+  animation: shake 0.4s ease;
+}
+@keyframes shake { 0%, 100% { transform: translateX(0); } 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
+.editor-textarea::placeholder { color: #888; font-style: italic; font-size: 14px; }
+
+.word-counter-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.telemetry-micro-stats {
+  font-size: 11.5px;
+  color: #555;
+  display: inline-flex;
+  gap: 12px;
+}
+
+/* ASSETS AREA */
+.sub-assets-area { margin: 10px 0; display: flex; flex-direction: column; gap: 10px; }
+.asset-card { background: #fff; border: 1.5px solid #d1c7b7; border-radius: 4px; padding: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.04); }
+.asset-card-header { display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: bold; color: var(--academic-navy); margin-bottom: 6px; border-bottom: 1px dashed #d1c7b7; padding-bottom: 4px; }
+
+/* SPRINGER TABLES */
+.springer-table-container { margin: 15px 0; overflow-x: auto; background: #fff; padding: 10px; border: 1px solid #e0d8cb; border-radius: 4px; }
+.springer-table-caption { font-weight: bold; font-size: 13px; margin-bottom: 6px; color: #222; }
+.springer-table { width: 100%; border-collapse: collapse; font-size: 13px; border-top: 2px solid #000; border-bottom: 2px solid #000; }
+.springer-table th { border-bottom: 1px solid #000; padding: 6px 8px; text-align: left; font-weight: bold; background: #fbf9f5; }
+.springer-table td { padding: 5px 8px; border-bottom: 1px solid #e0e0e0; }
+.springer-table tr:last-child td { border-bottom: none; }
+
+/* GUIDANCE & FORETHOUGHT BOXES */
+.section-guide-box {
+  background: #fdfaf3;
+  border: 1px solid #dcd4c7;
+  border-left: 4px solid var(--academic-gold);
+  padding: 12px 16px;
+  margin-bottom: 18px;
+  font-size: 14px;
+  color: #333;
+}
+.section-guide-box strong.guide-title { color: var(--academic-navy); font-size: 15px; display: block; margin-bottom: 4px; }
+
+.forethought-card {
+  background: #f0f7ff;
+  border: 1.5px solid #b2d4ff;
+  border-radius: 4px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+.forethought-title { font-size: 15px; font-weight: bold; color: #0d47a1; margin-bottom: 8px; }
+
+.section-confidence-card {
+  background: #f4efe6;
+  border: 1px solid #dcd4c7;
+  padding: 12px 16px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  font-size: 14px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* SIDEBAR: PH.D. PROTOCOL COMPANION */
+.sidebar-card {
+  background: #fff;
+  border: 1.5px solid var(--border-color);
+  border-radius: 4px;
+  padding: 18px;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 20px;
+}
+.sidebar-title {
+  font-size: 15px;
+  font-weight: bold;
+  color: var(--academic-navy);
+  border-bottom: 2px solid var(--academic-gold);
+  padding-bottom: 6px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.srl-state-badge {
+  font-size: 11px;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+.trace-stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 10px 0;
+}
+.trace-stat-box {
+  background: #fbf9f5;
+  border: 1px solid #e2dacd;
+  padding: 8px;
+  border-radius: 3px;
+  text-align: center;
+}
+.trace-stat-val { font-size: 16px; font-weight: bold; color: var(--academic-navy); }
+.trace-stat-lbl { font-size: 10.5px; color: #666; text-transform: uppercase; }
+
+/* TOAST */
+.anti-paste-toast {
+  position: fixed;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%) translateY(150px);
+  background: linear-gradient(135deg, #b71c1c, #d32f2f);
+  color: #fff;
+  padding: 14px 24px;
+  border-radius: 6px;
+  border: 2px solid #ffcdd2;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+  z-index: 3000;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  max-width: 620px;
+}
+.anti-paste-toast.show { transform: translateX(-50%) translateY(0); }
+
+/* MODALS */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(13,33,55,0.65);
+  backdrop-filter: blur(3px);
+  z-index: 4000;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.modal-overlay.show { display: flex; animation: fadeIn 0.2s ease; }
+.modal-box {
+  background: #fff;
+  border: 2px solid var(--academic-navy);
+  border-radius: 6px;
+  padding: 25px;
+  max-width: 750px;
+  width: 100%;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  max-height: 88vh;
+  overflow-y: auto;
+  position: relative;
+}
+.modal-box-wide { max-width: 950px; }
+.modal-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--academic-navy);
+  border-bottom: 2px solid var(--academic-gold);
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #777;
+}
+.modal-close-btn:hover { color: #b71c1c; }
+
+/* KNOWLEDGE BANK ACCORDIONS */
+.kb-accordion { border: 1.5px solid var(--border-color); border-radius: 4px; margin-bottom: 10px; overflow: hidden; background: #fff; }
+.kb-accordion summary {
+  background: linear-gradient(90deg, #f0ece1, #faf7f0);
+  padding: 10px 14px;
+  font-weight: bold;
+  color: var(--academic-navy);
+  cursor: pointer;
+  font-size: 13.5px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-left: 4px solid var(--academic-gold);
+}
+.kb-accordion summary::-webkit-details-marker { display: none; }
+.kb-accordion summary::after { content: "▸"; margin-left: auto; color: var(--academic-gold); font-size: 15px; transition: transform 0.2s; }
+.kb-accordion[open] summary::after { transform: rotate(90deg); }
+.kb-accordion[open] summary { border-bottom: 1px solid var(--border-color); }
+.kb-accordion .kb-body { padding: 12px 14px; }
+.kb-body p { font-size: 13px; color: #333; margin-bottom: 8px; }
+.kb-note { font-size: 11.5px; color: #666; font-style: italic; margin-top: 8px; border-top: 1px dashed #d1c7b7; padding-top: 6px; }
+.kb-body .springer-table { font-size: 11.5px; }
+
+/* PRINT VIEW FOR SPRINGER NATURE PDF MANUSCRIPT & REPORT */
+@media screen {
+  #printManuscriptContainer, #printReportContainer { display: none !important; }
+}
+
+@media print {
+  body { background: #fff !important; color: #000 !important; font-size: 10pt !important; padding: 0 !important; }
+  .top-bar, .imrad-nav-strip, .sidebar-col, .anti-paste-toast, .sub-controls, .spotter-actions, .spotter-header, .toolbar-actions, .btn, .modal-overlay, .container { display: none !important; }
+  #printManuscriptContainer.print-active, #printReportContainer.print-active { display: block !important; visibility: visible !important; width: 100% !important; margin: 0 !important; padding: 0 !important; }
+  .springer-print-header { text-align: center; margin-bottom: 20pt; border-bottom: 1.5pt solid #000; padding-bottom: 10pt; }
+  .springer-print-title { font-size: 14pt; font-weight: bold; margin-bottom: 8pt; line-height: 1.25; }
+  .springer-print-authors { font-size: 10pt; font-weight: bold; margin-bottom: 4pt; }
+  .springer-print-affil { font-size: 8.5pt; font-style: italic; color: #444; margin-bottom: 8pt; }
+  .springer-print-h2 { font-size: 11.5pt; font-weight: bold; border-bottom: 0.75pt solid #000; margin-top: 14pt; margin-bottom: 6pt; text-transform: uppercase; }
+  .springer-print-h3 { font-size: 10.5pt; font-weight: bold; margin-top: 10pt; margin-bottom: 4pt; }
+  .springer-print-p { font-size: 10pt; line-height: 1.45; text-align: justify; margin-bottom: 8pt; text-indent: 1.5em; }
+  .springer-print-table { width: 100%; border-collapse: collapse; margin: 10pt 0; font-size: 8.5pt; border-top: 1.5pt solid #000; border-bottom: 1.5pt solid #000; }
+  .springer-print-table th { border-bottom: 0.75pt solid #000; padding: 4pt; text-align: left; font-weight: bold; }
+  .springer-print-table td { padding: 3pt 4pt; border-bottom: 0.5pt solid #ddd; }
+  .springer-print-caption { font-size: 8.5pt; font-weight: bold; margin-bottom: 4pt; }
+  @page { size: letter; margin: 0.75in; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP STICKY BAR -->
+<header class="top-bar">
+  <div class="top-bar-title">
+    <span>🌿 Group Nelly (G3) — Dual-Waste Valorization IMRAD Engine</span>
+    <span class="gemini-badge-top">✨ Adaptive Multimodal Scaffolding</span>
+    <span class="condition-pill" onclick="openConditionModal()" id="activeConditionBadge" title="Group Nelly adaptive engine — 2×2 condition (C1–C4) gates AI scaffolding depth and teacher orchestration in real time.">🔬 Cond. 4: Adaptive + Enhanced Teacher</span>
+    <span class="autosave-pill" id="autosaveStatus">💾 Auto-Saved</span>
+  </div>
+  <div class="top-actions">
+    <button class="btn btn-help-teacher" onclick="triggerStudentHelpRequest()" id="btnHelpTeacher" title="Signal classroom teacher for assistance">🙋 Request Teacher Help</button>
+    <button class="btn btn-teacher" id="btnTeacherPanel" onclick="openTeacherDashboard()" title="Open Teacher Real-time Monitoring & Orchestration Dashboard (Enhanced Teacher conditions C2/C4 only)">👨🏫 Teacher Panel</button>
+    <div class="timer-badge" id="sectionTimerDisplay">⏱️ 40:00</div>
+    <button class="btn btn-gold" onclick="openKnowledgeBank()" title="Open the Group Nelly Knowledge Bank — full Dual-Waste Valorization conceptual & methodological framework">📚 Knowledge Bank</button>
+    <button class="btn btn-report" onclick="generateDiagnosticReport()" title="Generate Metacognitive & Process Trace Performance Report">📊 Performance Report</button>
+    <button class="btn btn-pdf" onclick="compileAndPrintPdf()" title="Download Committee-Ready IMRAD Proposal PDF">📄 PDF Manuscript</button>
+    <button class="btn btn-gold" onclick="exportTraceDataset()" title="Export Research Trace Data (JSON)">💾 Trace JSON</button>
+    <button class="btn btn-gold" onclick="exportTraceCSV()" title="Export Research Trace Data (CSV)">📤 Trace CSV</button>
+  </div>
+</header>
+
+<!-- IMRAD STAGE NAVIGATION -->
+<nav class="imrad-nav-strip" id="imradNav">
+  <button class="tab-btn active" id="tab-setup" onclick="switchSection('setup')"><span>1. Setup & Baseline</span></button>
+  <button class="tab-btn locked" id="tab-intro" onclick="switchSection('intro')"><span>2. Introduction (RQ1–RQ5)</span><span class="tab-time">40m</span></button>
+  <button class="tab-btn locked" id="tab-methods" onclick="switchSection('methods')"><span>3. Methods & 5-Pathway Protocol</span><span class="tab-time">40m</span></button>
+  <button class="tab-btn locked" id="tab-results" onclick="switchSection('results')"><span>4. Pathway Results Synthesis</span><span class="tab-time">40m</span></button>
+  <button class="tab-btn locked" id="tab-discussion" onclick="switchSection('discussion')"><span>5. Discussion & Mechanism</span><span class="tab-time">40m</span></button>
+  <button class="tab-btn locked" id="tab-references" onclick="switchSection('references')"><span>6. References & Reflection</span><span class="tab-time">40m</span></button>
+</nav>
+
+<!-- MAIN CONTAINER -->
+<main class="container">
+  <article class="paper" id="paperContainer">
+    <header class="manuscript-header">
+      <span class="springer-badge">Springer / APA 7 IMRAD • School Capstone • Dual-Waste Valorization</span>
+      <h1 class="manuscript-title" id="displayProjectTitle">Conceptual &amp; Methodological Framework for Dual-Waste Valorization: Water Hyacinth (<i>Eichhornia crassipes</i>) and Rice Straw (<i>Oryza sativa</i>) Residues → Ionic Cross-Linked Bio-Sponge, Paper/Foam, Compost, Modelled Biogas and Sensory Acceptance</h1>
+      <div class="manuscript-authors" id="displayAuthors">Group Nelly Research Team (G3): [5 Co-Investigators — Bio-Sponge Lead, Paper/Foam Lead, Compost/Plant Lead, Biogas Model & Data Analyst, Sensory Pilot & QA Manager]</div>
+      <div class="manuscript-affiliations">
+        Secondary Multilingual Bilingual Program (SMBP 2.4 Classroom), Chalermkwansatree School, Phitsanulok 65000, Thailand<br>
+        Grade 8 / Group Nelly (G3) | Source workbooks: <i>Water_Hyacinth_Rice_Straw_Conceptual_Methodology_Framework.xlsx</i> &amp; <i>Water_Hyacinth_Rice_Straw_Conceptual_Methodology_Framework.docx</i><br>
+        Advisors: [Primary Faculty STEM Advisor &amp; Science Co-Advisor]
+      </div>
+    </header>
+
+    <!-- SECTION 1: SETUP & BASELINE METADATA -->
+    <section class="imrad-section active" id="sec-setup">
+      <div class="section-title-bar">
+        <h2>Stage 1: Research Metadata, Team Configuration &amp; Baseline Forethought</h2>
+        <span style="font-size:12px;opacity:0.85">Self-Regulated Learning: Forethought Phase</span>
+      </div>
+
+      <div class="section-guide-box">
+        <strong class="guide-title">📋 Phase 1 Instructions: Group Nelly Team Credentials &amp; Prior Calibration</strong>
+        Please complete the 5 student investigator names (mapped 1-to-1 to the 5 experimental pathways) and the 2 Faculty Advisors below. Then, record your baseline prior knowledge and self-efficacy calibration rating before unlocking Section 2.
+      </div>
+
+      <div style="background:#fdfaf3;border:1.5px solid var(--border-color);padding:18px;border-radius:4px;margin-bottom:20px;">
+        <h3 style="font-size:15px;color:var(--academic-navy);margin-bottom:6px;border-bottom:1px solid #d1c7b7;padding-bottom:5px;">👥 Group Nelly Research Team — Pathway-Specific Role Allocation (5 Co-Investigators)</h3>
+        <p style="font-size:12px;color:#666;margin-bottom:12px;">Per the reconciled framework (docx §2 Study Design and Experimental Architecture): each co-investigator is assigned exactly one of the 5 experimental pathways so authorship responsibilities are transparent in the final manuscript.</p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;">
+          <div><label class="meta-label">Student 1 — Principal Investigator (Bio-Sponge Lead):</label><input type="text" id="metaStudent1" class="meta-text" style="min-height:38px;padding:6px 10px;width:100%;" placeholder="e.g., N. Suwannarat (ID: 2401)"></div>
+          <div><label class="meta-label">Student 2 — Paper/Foam Pathway Lead:</label><input type="text" id="metaStudent2" class="meta-text" style="min-height:38px;padding:6px 10px;width:100%;" placeholder="e.g., P. Charoenphon (ID: 2402)"></div>
+          <div><label class="meta-label">Student 3 — Compost / Plant Trial Lead:</label><input type="text" id="metaStudent3" class="meta-text" style="min-height:38px;padding:6px 10px;width:100%;" placeholder="e.g., T. Rattanaporn (ID: 2403)"></div>
+          <div><label class="meta-label">Student 4 — Biogas Model &amp; Data Analyst:</label><input type="text" id="metaStudent4" class="meta-text" style="min-height:38px;padding:6px 10px;width:100%;" placeholder="e.g., K. Wirotphon (ID: 2404)"></div>
+          <div><label class="meta-label">Student 5 — Sensory Pilot &amp; QA Manager:</label><input type="text" id="metaStudent5" class="meta-text" style="min-height:38px;padding:6px 10px;width:100%;" placeholder="e.g., A. Phrommatee (ID: 2405)"></div>
+        </div>
+
+        <h3 style="font-size:15px;color:var(--academic-navy);margin:18px 0 12px;border-bottom:1px solid #d1c7b7;padding-bottom:5px;">🎓 Research Advisory Panel (2 Advisors)</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;">
+          <div><label class="meta-label">Advisory Teacher 1 — Lead STEM Advisor:</label><input type="text" id="metaAdvisor1" class="meta-text" style="min-height:38px;padding:6px 10px;width:100%;" placeholder="e.g., Dr. S. Prasertsuk (Biology &amp; Polymer Advisor)"></div>
+          <div><label class="meta-label">Advisory Teacher 2 — Co-Advisor / Lab Instructor:</label><input type="text" id="metaAdvisor2" class="meta-text" style="min-height:38px;padding:6px 10px;width:100%;" placeholder="e.g., Ms. A. Charoenwong (SMBP Science Specialist)"></div>
+        </div>
+      </div>
+
+      <div class="theory-grid">
+        <div class="theory-card">
+          <h4>🧠 Pillar 1: Self-Regulated Learning (Zimmerman, 2000)</h4>
+          Three-phase cyclical model driving this engine: <strong>(1) Forethought</strong> — problem decomposition, 5 pathway-specific research questions (RQ1–RQ5), operational hypotheses, and stratified sampling logic; <strong>(2) Performance</strong> — locked, empty writing environment with zero-paste interception and the 4-level adaptive scaffolding gradient (SRL Cognitive Spotter); <strong>(3) Self-Reflection</strong> — metacognitive confidence rating, word-count calibration, and bias indexing.
+        </div>
+        <div class="theory-card alt">
+          <h4>⚖️ Pillar 2: Cognitive Load Theory (Sweller, 2011)</h4>
+          The interface minimizes <strong>extraneous load</strong> (Times New Roman academic tokens, one IMRAD stage at a time, 40-minute bounded sessions, per-subsection targets) while channeling <strong>germane load</strong> into schema construction (Socratic questions → data redirects → sentence frames → autonomy fading). External pasting is blocked so cognitive effort is invested in <em>productive struggle</em>, not transcription.
+        </div>
+      </div>
+
+      <div class="default-figure">
+        <svg viewBox="0 0 860 410" role="img" aria-label="Figure 1: Integrated conceptual framework for dual-waste valorization">
+          <defs>
+            <marker id="arrowN1" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#0d2137"/></marker>
+          </defs>
+          <text x="430" y="24" text-anchor="middle" font-size="15" font-weight="bold" fill="#0d2137">Integrated Conceptual Framework — Dual-Waste Valorization of Water Hyacinth + Rice Straw</text>
+
+          <rect x="20" y="50" width="180" height="64" rx="6" fill="#ffebee" stroke="#b71c1c" stroke-width="1.5"/>
+          <text x="110" y="74" text-anchor="middle" font-size="12" font-weight="bold" fill="#b71c1c">PROBLEM / INPUTS</text>
+          <text x="110" y="92" text-anchor="middle" font-size="10" fill="#333">Hyacinth river blockage</text>
+          <text x="110" y="105" text-anchor="middle" font-size="10" fill="#333">+ rice-straw burning (PM2.5)</text>
+
+          <rect x="215" y="50" width="155" height="64" rx="6" fill="#e3f2fd" stroke="#0d47a1" stroke-width="1.5"/>
+          <text x="293" y="74" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d47a1">PRE-PROCESS</text>
+          <text x="293" y="92" text-anchor="middle" font-size="10" fill="#333">Dry, grind</text>
+          <text x="293" y="105" text-anchor="middle" font-size="10" fill="#333">1–2 mm fiber fraction</text>
+
+          <rect x="385" y="50" width="180" height="64" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
+          <text x="475" y="74" text-anchor="middle" font-size="12" font-weight="bold" fill="#2e7d32">EXPERIMENTAL FACTOR</text>
+          <text x="475" y="92" text-anchor="middle" font-size="10" fill="#333">Hyacinth:straw ratio • pretreatment</text>
+          <text x="475" y="105" text-anchor="middle" font-size="10" fill="#333">compost ratio • product type</text>
+
+          <rect x="580" y="50" width="260" height="64" rx="6" fill="#fff8e1" stroke="#f9a825" stroke-width="1.5"/>
+          <text x="710" y="74" text-anchor="middle" font-size="12" font-weight="bold" fill="#f57f17">5 PATHWAYS (A–E)</text>
+          <text x="710" y="92" text-anchor="middle" font-size="10" fill="#333">Bio-Sponge • Paper/Foam • Compost</text>
+          <text x="710" y="105" text-anchor="middle" font-size="10" fill="#333">Biogas Model • Sensory Pilot</text>
+
+          <path d="M 200 82 L 213 82" stroke="#0d2137" stroke-width="1.8" fill="none" marker-end="url(#arrowN1)"/>
+          <path d="M 370 82 L 383 82" stroke="#0d2137" stroke-width="1.8" fill="none" marker-end="url(#arrowN1)"/>
+          <path d="M 565 82 L 578 82" stroke="#0d2137" stroke-width="1.8" fill="none" marker-end="url(#arrowN1)"/>
+
+          <rect x="20" y="138" width="155" height="86" rx="6" fill="#eef9f7" stroke="#00897b" stroke-width="1.5"/>
+          <text x="97" y="158" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#00695c">A. Bio-Sponge (n=15)</text>
+          <text x="97" y="174" text-anchor="middle" font-size="10" fill="#333">Absorption, porosity, density,</text>
+          <text x="97" y="187" text-anchor="middle" font-size="10" fill="#333">compression recovery</text>
+          <text x="97" y="207" text-anchor="middle" font-size="9.5" font-style="italic" fill="#00695c">One-way ANOVA + Tukey</text>
+
+          <rect x="190" y="138" width="155" height="86" rx="6" fill="#eef9f7" stroke="#00897b" stroke-width="1.5"/>
+          <text x="267" y="158" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#00695c">B. Paper/Foam (n=10)</text>
+          <text x="267" y="174" text-anchor="middle" font-size="10" fill="#333">Yield, tensile-proxy load,</text>
+          <text x="267" y="187" text-anchor="middle" font-size="10" fill="#333">quality rating</text>
+          <text x="267" y="207" text-anchor="middle" font-size="9.5" font-style="italic" fill="#00695c">Welch t-test</text>
+
+          <rect x="360" y="138" width="155" height="86" rx="6" fill="#eef9f7" stroke="#00897b" stroke-width="1.5"/>
+          <text x="437" y="158" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#00695c">C. Compost (n=12 pots)</text>
+          <text x="437" y="174" text-anchor="middle" font-size="10" fill="#333">Germination, weekly height,</text>
+          <text x="437" y="187" text-anchor="middle" font-size="10" fill="#333">shoot mass</text>
+          <text x="437" y="207" text-anchor="middle" font-size="9.5" font-style="italic" fill="#00695c">Growth curves + ANOVA</text>
+
+          <rect x="530" y="138" width="140" height="86" rx="6" fill="#eef9f7" stroke="#00897b" stroke-width="1.5"/>
+          <text x="600" y="158" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#00695c">D. Biogas (model)</text>
+          <text x="600" y="174" text-anchor="middle" font-size="10" fill="#333">CH₄, LPG, kWh</text>
+          <text x="600" y="187" text-anchor="middle" font-size="10" fill="#333">theoretical only</text>
+          <text x="600" y="207" text-anchor="middle" font-size="9.5" font-style="italic" fill="#00695c">Deterministic ±10%</text>
+
+          <rect x="685" y="138" width="155" height="86" rx="6" fill="#eef9f7" stroke="#00897b" stroke-width="1.5"/>
+          <text x="762" y="158" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#00695c">E. Sensory (n=30)</text>
+          <text x="762" y="174" text-anchor="middle" font-size="10" fill="#333">Softness, exfoliation,</text>
+          <text x="762" y="187" text-anchor="middle" font-size="10" fill="#333">acceptance, intent</text>
+          <text x="762" y="207" text-anchor="middle" font-size="9.5" font-style="italic" fill="#00695c">Paired Wilcoxon / McNemar</text>
+
+          <rect x="100" y="252" width="260" height="60" rx="6" fill="#fdf6ec" stroke="#c5a059" stroke-width="1.5"/>
+          <text x="230" y="276" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d2137">ANALYSIS &amp; DECISION RULE</text>
+          <text x="230" y="295" text-anchor="middle" font-size="10.5" fill="#333">Pre-specify tests • show effect size &amp; CI</text>
+          <text x="230" y="307" text-anchor="middle" font-size="10.5" fill="#333">integrate at decision stage, not pooled</text>
+
+          <rect x="500" y="252" width="280" height="60" rx="6" fill="#e8f5e9" stroke="#1b5e20" stroke-width="1.5"/>
+          <text x="640" y="276" text-anchor="middle" font-size="12" font-weight="bold" fill="#1b5e20">CIRCULAR-ECONOMY IMPACT</text>
+          <text x="640" y="295" text-anchor="middle" font-size="10.5" fill="#333">High-value bio-sponge + secondary</text>
+          <text x="640" y="307" text-anchor="middle" font-size="10.5" fill="#333">material / soil / energy pathways</text>
+
+          <path d="M 230 224 L 230 250" stroke="#0d2137" stroke-width="1.8" fill="none" marker-end="url(#arrowN1)"/>
+          <path d="M 640 224 L 640 250" stroke="#0d2137" stroke-width="1.8" fill="none" marker-end="url(#arrowN1)"/>
+          <path d="M 360 282 L 498 282" stroke="#0d2137" stroke-width="1.8" fill="none" marker-end="url(#arrowN1)"/>
+
+          <rect x="100" y="338" width="600" height="50" rx="6" fill="#fff3e0" stroke="#e65100" stroke-width="1.5" stroke-dasharray="6 4"/>
+          <text x="400" y="358" text-anchor="middle" font-size="12" font-weight="bold" fill="#e65100">⚠️ INTEGRATED SAFETY / ETHICS GATE</text>
+          <text x="400" y="375" text-anchor="middle" font-size="10.5" fill="#333">No-digester rule • non-edible test plants • consent/assent for sensory pilot • daily QA lock • version-stamped RAW/CLEAN/ANALYSIS</text>
+        </svg>
+        <div class="springer-fig-caption">Fig. 1 Integrated conceptual framework linking local waste inputs, experimental factors, pathway-specific outcomes and the final prototype decision.</div>
+      </div>
+
+      <div class="forethought-card">
+        <h3 class="forethought-title">🎯 Baseline Forethought &amp; Prior Knowledge Assessment</h3>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:15px;font-size:13.5px;">
+          <div>
+            <label style="font-weight:bold;display:block;margin-bottom:4px;">1. Prior Knowledge of Dual-Waste Valorization &amp; Bio-Sponge Chemistry:</label>
+            <select id="baselinePriorKnowledge" class="editor-textarea" style="min-height:36px;padding:4px 8px;">
+              <option value="1">1 - Novice (No prior experience with biopolymers or waste valorization)</option>
+              <option value="2">2 - Basic (Familiar with cellulose and simple compost)</option>
+              <option value="3" selected>3 - Intermediate (Understand ionic cross-linking, fiber preparation, and Yamane sampling)</option>
+              <option value="4">4 - Advanced (Experienced with ANOVA, paired tests, and mass-balance models)</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-weight:bold;display:block;margin-bottom:4px;">2. Baseline Self-Efficacy for IMRAD Writing (0–100%):</label>
+            <select id="baselineSelfEfficacy" class="editor-textarea" style="min-height:36px;padding:4px 8px;">
+              <option value="40">40% - Moderate Uncertainty (Need extensive scaffolding)</option>
+              <option value="60">60% - Somewhat Confident in IMRAD drafting</option>
+              <option value="80" selected>80% - Highly Confident in scientific articulation</option>
+              <option value="95">95% - Expert Mastery in APA 7 / Springer formatting</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="forethought-card" style="background:#f7f4ee;border-color:#dcd4c7;">
+        <h3 class="forethought-title" style="color:#6a4f10;">🗺️ Group Nelly Project Map — 5 Pathways × 3 Coordination Layers</h3>
+        <div class="study-map-grid">
+          <div class="study-map-card">
+            <h4>Layer 1 — Pre-Registration</h4>
+            Freeze RQs RQ1–RQ5, treatment codes (E1/E2/E3, P0/P1, C0/C1/C2), replicate IDs, paired survey fields, and the no-digester safety gate before any measurement.
+          </div>
+          <div class="study-map-card current">
+            <h4>Layer 2 — 5 Pathway Deployment (ACTIVE)</h4>
+            This engine implements all five pathways: <strong>A. Bio-Sponge</strong> (primary), <strong>B. Paper/Foam</strong>, <strong>C. Compost</strong>, <strong>D. Biogas model</strong>, <strong>E. Sensory pilot</strong>. Each pathway owns one student investigator.
+          </div>
+          <div class="study-map-card">
+            <h4>Layer 3 — Integrated Decision &amp; Reporting</h4>
+            Pathway evidence is integrated at the decision stage (Fig. 1). Recommend the optimized bio-sponge only when physical performance, reproducibility, safety and blinded acceptance are jointly satisfied.
+          </div>
+        </div>
+        <p style="font-size:12px;color:#666;margin-top:10px;">⚙️ Condition assignment drives real behavior in this engine: Conditions 1–2 (Restricted GenAI) lock Spotter Levels 2–4 and the Writing Shaper; Conditions 1 &amp; 3 (Standard Teacher) hide the Teacher Panel and disable automated stagnation alerts (≥90 s); Conditions 2 &amp; 4 (Enhanced Teacher) enable full orchestration.</p>
+      </div>
+
+      <div style="text-align:center;margin-top:25px;">
+        <button class="btn btn-unlock" onclick="completeAndUnlockSection('setup', 'intro')">🔓 Save Setup &amp; Unlock Stage 2: Introduction (40 Min)</button>
+      </div>
+    </section>
+
+    <!-- SECTION 2: INTRODUCTION -->
+    <section class="imrad-section" id="sec-intro">
+      <div class="section-title-bar">
+        <h2>Stage 2: 1.0 Background, Problem Statement &amp; Five Research Questions</h2>
+        <span style="font-size:12px;opacity:0.85">Session Budget: 40 Minutes</span>
+      </div>
+
+      <div class="section-toolbar">
+        <span class="toolbar-label">⚙️ Section Tools:</span>
+        <div class="toolbar-actions">
+          <button class="btn-custom-sub" onclick="openAddSubModal('intro')">➕ Add Custom Subsection</button>
+        </div>
+      </div>
+
+      <div class="section-guide-box">
+        <strong class="guide-title">🌿 Scientific Directives for Introduction (1.0)</strong>
+        • Establish the dual-waste problem: <i>Eichhornia crassipes</i> (water hyacinth) river-blockage in Thai waterways + <i>Oryza sativa</i> rice-straw open-field burning / PM2.5 contribution.<br>
+        • Introduce the multi-pathway convergent design: ionic cross-linked <strong>bio-sponge</strong> (sodium alginate + CaCl₂, primary pathway A) supported by paper/foam, compost, deterministic biogas model and a 30-person blinded sensory pilot.<br>
+        • Articulate operational hypotheses for RQ1–RQ5 (e.g., 50:50 hyacinth:straw balance for absorbency + recovery; mild alkali increases paper strength; 50% compost supports germination; combined biomass has modeled energy potential; bio-sponge achieves competitive paired ratings vs synthetic comparator).
+      </div>
+
+      <div id="subs-container-intro"></div>
+
+      <div class="section-confidence-card">
+        <div>
+          <strong>🎯 Metacognitive Monitoring:</strong> Rate your confidence for Introduction (0–100%):
+          <select id="conf-intro" style="font-family:'Times New Roman',serif;padding:3px 8px;margin-left:6px;">
+            <option value="50">50% - Low Confidence (Unsure of hypotheses/mechanisms)</option>
+            <option value="75" selected>75% - Moderate Confidence (Clear problem &amp; variables)</option>
+            <option value="90">90% - High Confidence (Rigorous APA/Springer framing)</option>
+          </select>
+        </div>
+        <button class="btn btn-unlock" onclick="completeAndUnlockSection('intro', 'methods')">🔓 Complete &amp; Unlock Stage 3: Methods (40 Min)</button>
+      </div>
+    </section>
+
+    <!-- SECTION 3: METHODS -->
+    <section class="imrad-section" id="sec-methods">
+      <div class="section-title-bar">
+        <h2>Stage 3: 2.0 Materials, 5-Pathway Experimental Protocol &amp; Data Governance</h2>
+        <span style="font-size:12px;opacity:0.85">Session Budget: 40 Minutes</span>
+      </div>
+
+      <div class="section-toolbar">
+        <span class="toolbar-label">⚙️ Section Tools:</span>
+        <div class="toolbar-actions">
+          <button class="btn-custom-sub" onclick="openAddSubModal('methods')">➕ Add Custom Subsection</button>
+        </div>
+      </div>
+
+      <div class="section-guide-box">
+        <strong class="guide-title">🧪 Scientific Directives for Methods (2.0)</strong>
+        • Specify treatments: <strong>A. Bio-Sponge</strong> — 70:30 / 50:50 / 30:70 hyacinth:straw × 5 independent replicates = 15 sponges with sodium alginate (binder) + CaCl₂ (ionic cross-linker); <strong>B. Paper/Foam</strong> — P0 untreated vs P1 mild alkali × 5 sheets each = 10 sheets; <strong>C. Compost</strong> — C0 0% / C1 50% / C2 100% × 4 pots = 12 pots with weekly germination/height W1–W4; <strong>D. Biogas</strong> — deterministic mass-balance (no digester); <strong>E. Sensory</strong> — 30 paired A/B evaluators (10 students / 10 educators / 10 artisans).<br>
+        • Document QA gate: stratified random sampling, RAW / CLEAN / ANALYSIS versioning, daily lock, formula audit, paired survey A/B counterbalance.
+      </div>
+
+      <div class="default-figure">
+        <svg viewBox="0 0 860 340" role="img" aria-label="Figure 2: Five-pathway experimental architecture for dual-waste valorization">
+          <defs>
+            <marker id="arrowPath" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#0d2137"/></marker>
+          </defs>
+          <rect x="40" y="30" width="170" height="80" rx="6" fill="#ffebee" stroke="#b71c1c" stroke-width="1.5"/>
+          <text x="125" y="54" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#b71c1c">① Dual Feedstock Input</text>
+          <text x="125" y="73" text-anchor="middle" font-size="10.5" fill="#333">Water hyacinth</text>
+          <text x="125" y="86" text-anchor="middle" font-size="10.5" fill="#333">+ rice straw</text>
+          <text x="125" y="102" text-anchor="middle" font-size="10" font-style="italic" fill="#444">batch-labeled, dry to 1–2 mm</text>
+
+          <rect x="240" y="30" width="170" height="80" rx="6" fill="#e3f2fd" stroke="#0d47a1" stroke-width="1.5"/>
+          <text x="325" y="54" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#0d47a1">② Pre-Processing</text>
+          <text x="325" y="73" text-anchor="middle" font-size="10.5" fill="#333">Wash, air-dry, grind, sieve</text>
+          <text x="325" y="86" text-anchor="middle" font-size="10.5" fill="#333">1–2 mm fiber fraction</text>
+          <text x="325" y="102" text-anchor="middle" font-size="10" font-style="italic" fill="#444">dry-mass conversion recorded</text>
+
+          <rect x="440" y="30" width="170" height="80" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
+          <text x="525" y="54" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#2e7d32">③ Randomized Run Sheet</text>
+          <text x="525" y="73" text-anchor="middle" font-size="10.5" fill="#333">Pre-assign replicate IDs</text>
+          <text x="525" y="86" text-anchor="middle" font-size="10.5" fill="#333">randomize order + positions</text>
+          <text x="525" y="102" text-anchor="middle" font-size="10" font-style="italic" fill="#444">no convenience swapping</text>
+
+          <rect x="640" y="30" width="180" height="80" rx="6" fill="#fff8e1" stroke="#f9a825" stroke-width="1.5"/>
+          <text x="730" y="54" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#f57f17">④ 5-Pathway Deployment</text>
+          <text x="730" y="73" text-anchor="middle" font-size="10.5" fill="#333">A. Bio-Sponge (n=15)</text>
+          <text x="730" y="86" text-anchor="middle" font-size="10.5" fill="#333">B. Paper/Foam (n=10)</text>
+          <text x="730" y="102" text-anchor="middle" font-size="10" font-style="italic" fill="#444">C. Compost (12) • D. Biogas • E. Sensory (30)</text>
+
+          <path d="M 210 70 L 238 70" stroke="#0d2137" stroke-width="2" fill="none" marker-end="url(#arrowPath)"/>
+          <path d="M 410 70 L 438 70" stroke="#0d2137" stroke-width="2" fill="none" marker-end="url(#arrowPath)"/>
+          <path d="M 610 70 L 638 70" stroke="#0d2137" stroke-width="2" fill="none" marker-end="url(#arrowPath)"/>
+
+          <rect x="20" y="148" width="160" height="120" rx="6" fill="#eef9f7" stroke="#00897b" stroke-width="2"/>
+          <text x="100" y="170" text-anchor="middle" font-size="12" font-weight="bold" fill="#00695c">A. BIO-SPONGE</text>
+          <text x="100" y="187" text-anchor="middle" font-size="10" fill="#333">Sodium alginate + CaCl₂</text>
+          <text x="100" y="200" text-anchor="middle" font-size="10" fill="#333">E1=70:30, E2=50:50, E3=30:70</text>
+          <text x="100" y="220" text-anchor="middle" font-size="10" font-weight="bold" fill="#0d2137">DVs:</text>
+          <text x="100" y="234" text-anchor="middle" font-size="10" fill="#333">Absorption (g/g)</text>
+          <text x="100" y="247" text-anchor="middle" font-size="10" fill="#333">Porosity %, density, recovery</text>
+          <text x="100" y="262" text-anchor="middle" font-size="10" font-style="italic" fill="#00695c">One-way ANOVA + Tukey</text>
+
+          <rect x="195" y="148" width="160" height="120" rx="6" fill="#eef9f7" stroke="#00897b" stroke-width="2"/>
+          <text x="275" y="170" text-anchor="middle" font-size="12" font-weight="bold" fill="#00695c">B. PAPER/FOAM</text>
+          <text x="275" y="187" text-anchor="middle" font-size="10" fill="#333">P0 untreated vs P1 alkali</text>
+          <text x="275" y="200" text-anchor="middle" font-size="10" fill="#333">5 sheets per group</text>
+          <text x="275" y="220" text-anchor="middle" font-size="10" font-weight="bold" fill="#0d2137">DVs:</text>
+          <text x="275" y="234" text-anchor="middle" font-size="10" fill="#333">Yield (g/100g DM)</text>
+          <text x="275" y="247" text-anchor="middle" font-size="10" fill="#333">Tensile-proxy load</text>
+          <text x="275" y="262" text-anchor="middle" font-size="10" font-style="italic" fill="#00695c">Welch t-test</text>
+
+          <rect x="370" y="148" width="160" height="120" rx="6" fill="#eef9f7" stroke="#00897b" stroke-width="2"/>
+          <text x="450" y="170" text-anchor="middle" font-size="12" font-weight="bold" fill="#00695c">C. COMPOST</text>
+          <text x="450" y="187" text-anchor="middle" font-size="10" fill="#333">C0=0%, C1=50%, C2=100%</text>
+          <text x="450" y="200" text-anchor="middle" font-size="10" fill="#333">4 pots per treatment</text>
+          <text x="450" y="220" text-anchor="middle" font-size="10" font-weight="bold" fill="#0d2137">DVs:</text>
+          <text x="450" y="234" text-anchor="middle" font-size="10" fill="#333">Germination (0/1)</text>
+          <text x="450" y="247" text-anchor="middle" font-size="10" fill="#333">Height W1–W4 (cm)</text>
+          <text x="450" y="262" text-anchor="middle" font-size="10" font-style="italic" fill="#00695c">Growth curves + W4 ANOVA</text>
+
+          <rect x="545" y="148" width="145" height="120" rx="6" fill="#eef9f7" stroke="#00897b" stroke-width="2"/>
+          <text x="617" y="170" text-anchor="middle" font-size="12" font-weight="bold" fill="#00695c">D. BIOGAS</text>
+          <text x="617" y="187" text-anchor="middle" font-size="10" fill="#333">Deterministic model</text>
+          <text x="617" y="200" text-anchor="middle" font-size="10" fill="#333">VS × BMP constant</text>
+          <text x="617" y="220" text-anchor="middle" font-size="10" font-weight="bold" fill="#0d2137">DVs:</text>
+          <text x="617" y="234" text-anchor="middle" font-size="10" fill="#333">CH₄ (m³)</text>
+          <text x="617" y="247" text-anchor="middle" font-size="10" fill="#333">LPG, kWh (theoretical)</text>
+          <text x="617" y="262" text-anchor="middle" font-size="10" font-style="italic" fill="#00695c">±10% sensitivity</text>
+
+          <rect x="705" y="148" width="145" height="120" rx="6" fill="#eef9f7" stroke="#00897b" stroke-width="2"/>
+          <text x="777" y="170" text-anchor="middle" font-size="12" font-weight="bold" fill="#00695c">E. SENSORY</text>
+          <text x="777" y="187" text-anchor="middle" font-size="10" fill="#333">Blinded A/B paired</text>
+          <text x="777" y="200" text-anchor="middle" font-size="10" fill="#333">30 evaluators (10/10/10)</text>
+          <text x="777" y="220" text-anchor="middle" font-size="10" font-weight="bold" fill="#0d2137">DVs:</text>
+          <text x="777" y="234" text-anchor="middle" font-size="10" fill="#333">Softness, acceptance</text>
+          <text x="777" y="247" text-anchor="middle" font-size="10" fill="#333">Purchase intent (A/B)</text>
+          <text x="777" y="262" text-anchor="middle" font-size="10" font-style="italic" fill="#00695c">Wilcoxon + McNemar</text>
+
+          <rect x="60" y="292" width="320" height="40" rx="6" fill="#fdf6ec" stroke="#c5a059" stroke-width="1.5"/>
+          <text x="220" y="310" text-anchor="middle" font-size="11" font-weight="bold" fill="#0d2137">⑤ Integrated Decision Rule</text>
+          <text x="220" y="324" text-anchor="middle" font-size="10" fill="#333">Recommend optimized bio-sponge only when performance + reproducibility + safety + acceptance align</text>
+
+          <rect x="400" y="292" width="450" height="40" rx="6" fill="#fff3e0" stroke="#e65100" stroke-width="1.5" stroke-dasharray="6 4"/>
+          <text x="625" y="310" text-anchor="middle" font-size="11" font-weight="bold" fill="#e65100">⑥ QA / Ethics Gate (Daily Lock + RAW/CLEAN/ANALYSIS Versioning)</text>
+          <text x="625" y="324" text-anchor="middle" font-size="10" fill="#333">No digester • non-edible test plants • consent for sensory pilot • formulas audited</text>
+        </svg>
+        <div class="springer-fig-caption">Fig. 2 Five-Pathway Experimental Architecture for the Dual-Waste Valorization Capstone.</div>
+      </div>
+
+      <div id="subs-container-methods"></div>
+
+      <div class="section-confidence-card">
+        <div>
+          <strong>🎯 Metacognitive Monitoring:</strong> Rate your confidence for Methods (0–100%):
+          <select id="conf-methods" style="font-family:'Times New Roman',serif;padding:3px 8px;margin-left:6px;">
+            <option value="50">50% - Low Confidence</option>
+            <option value="75" selected>75% - Moderate Confidence</option>
+            <option value="90">90% - High Confidence</option>
+          </select>
+        </div>
+        <button class="btn btn-unlock" onclick="completeAndUnlockSection('methods', 'results')">🔓 Complete &amp; Unlock Stage 4: Results (40 Min)</button>
+      </div>
+    </section>
+
+    <!-- SECTION 4: RESULTS -->
+    <section class="imrad-section" id="sec-results">
+      <div class="section-title-bar">
+        <h2>Stage 4: 3.0 Pathway-Specific Results &amp; Empirical Data Synthesis</h2>
+        <span style="font-size:12px;opacity:0.85">Session Budget: 40 Minutes</span>
+      </div>
+
+      <div class="section-toolbar">
+        <span class="toolbar-label">⚙️ Section Tools:</span>
+        <div class="toolbar-actions">
+          <button class="btn-custom-sub" onclick="openAddSubModal('results')">➕ Add Custom Subsection</button>
+        </div>
+      </div>
+
+      <div class="section-guide-box">
+        <strong class="guide-title">📊 Pathway-Level Empirical Data for Synthesis (Tables 1 &amp; 2)</strong>
+        Synthesize the design and sampling evidence from the <i>Design &amp; Samples</i> and <i>Sampling Calculator</i> sheets. All pathway values must be presented with target n, allocation, primary test, and effect-size plan.
+        <div class="springer-table-container">
+          <div class="springer-table-caption">Table 1: Five-Pathway Experimental Design, Replicates, Units of Analysis &amp; Primary Tests</div>
+          <table class="springer-table">
+            <thead>
+              <tr>
+                <th>Pathway</th>
+                <th>Design</th>
+                <th>Independent Variable (Levels)</th>
+                <th>Dependent Variables</th>
+                <th>Target n</th>
+                <th>Primary Test</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>A. Bio-Sponge</td><td>Completely randomized 1-factor lab experiment</td><td>Hyacinth:straw blend ratio (E1=70:30; E2=50:50; E3=30:70)</td><td>Absorption (g/g), porosity (%), density (g/cm³), compression recovery (%)</td><td>15 (5/ blend)</td><td>One-way ANOVA + Tukey HSD; Welch / Kruskal fallback</td></tr>
+              <tr><td>B. Paper/Foam</td><td>Two-group controlled material experiment</td><td>Pretreatment (P0 untreated; P1 mild alkali)</td><td>Yield (g/100 g DM), tensile-proxy load, quality rating</td><td>10 (5/ group)</td><td>Welch two-sample t-test; Mann–Whitney fallback</td></tr>
+              <tr><td>C. Compost</td><td>Randomized pot experiment (weekly repeated measures)</td><td>Compost ratio (C0=0%; C1=50%; C2=100%)</td><td>Germination, height W1–W4, final shoot mass</td><td>12 pots (4/ treatment)</td><td>W4/final one-way ANOVA; growth trajectories</td></tr>
+              <tr><td>D. Biogas</td><td>Deterministic mass-balance model (no digester)</td><td>VS mass × BMP factor (combined feedstock)</td><td>Theoretical CH₄ (m³), LPG equivalent (kg), electricity (kWh)</td><td>1 scenario + ±10% sensitivity</td><td>Equation-based estimate (no inferential test)</td></tr>
+              <tr><td>E. Sensory</td><td>Blind within-person paired comparison</td><td>Product type (bio-sponge vs synthetic)</td><td>Softness, exfoliation, durability, acceptance, purchase intent</td><td>30 evaluators (10/10/10)</td><td>Paired Wilcoxon / paired t-test; McNemar for paired intent</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="springer-table-container">
+          <div class="springer-table-caption">Table 2: Reconciled Sensory Survey Sampling Plan (pilot n=30 vs Yamane n=172)</div>
+          <table class="springer-table">
+            <thead>
+              <tr>
+                <th>Option</th>
+                <th>Population N</th>
+                <th>Margin e</th>
+                <th>Computed n</th>
+                <th>Allocation (Student / Educator / Artisan)</th>
+                <th>Systematic Interval (k)</th>
+                <th>Inference</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Recommended Capstone Pilot</strong></td><td>300</td><td>Not claimed</td><td>30</td><td>10 / 10 / 10 (equal)</td><td>Students k=18; Educators k=6; Artisans k=6</td><td>Pilot / acceptability evidence; not population-representative unless weighted</td></tr>
+              <tr><td>Optional Full Yamane Survey</td><td>300</td><td>0.05</td><td>172 (Yamane: n = N/[1+Ne²] rounded up)</td><td>Proportionate ≈ 103 / 34 / 35</td><td>≈ 1.7–1.8 within strata (≈ every 2nd person)</td><td>Population-oriented estimate with ≈ 5% precision</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="default-figure">
+          <svg viewBox="0 0 860 320" role="img" aria-label="Figure 3: Bio-Sponge replicate distribution and sensory sampling allocation">
+            <text x="180" y="26" text-anchor="middle" font-size="13" font-weight="bold" fill="#0d2137">Fig. 3a — Pathway Replicate Distribution (Target n)</text>
+            <line x1="62" y1="48" x2="62" y2="240" stroke="#000" stroke-width="1.5"/>
+            <line x1="62" y1="240" x2="305" y2="240" stroke="#000" stroke-width="1.5"/>
+            <g font-size="10" fill="#333" text-anchor="end">
+              <text x="56" y="244">0</text>
+              <text x="56" y="210">5</text>
+              <text x="56" y="176">10</text>
+              <text x="56" y="142">15</text>
+              <text x="56" y="108">20</text>
+              <text x="56" y="74">25</text>
+              <text x="56" y="50">30</text>
+            </g>
+            <g stroke="#ddd" stroke-width="1">
+              <line x1="62" y1="208" x2="305" y2="208"/>
+              <line x1="62" y1="174" x2="305" y2="174"/>
+              <line x1="62" y1="140" x2="305" y2="140"/>
+              <line x1="62" y1="106" x2="305" y2="106"/>
+              <line x1="62" y1="72" x2="305" y2="72"/>
+            </g>
+            <rect x="72" y="175" width="40" height="65" fill="#00897b"/>
+            <rect x="132" y="208" width="40" height="32" fill="#26a69a"/>
+            <rect x="192" y="160" width="40" height="80" fill="#26a69a"/>
+            <rect x="252" y="240" width="40" height="0" fill="#ffa726"/>
+            <g font-size="10.5" font-weight="bold" fill="#0d2137" text-anchor="middle">
+              <text x="92" y="170">15</text>
+              <text x="152" y="203">10</text>
+              <text x="212" y="155">12</text>
+              <text x="272" y="234">1 (model)</text>
+            </g>
+            <g font-size="9.5" fill="#333" text-anchor="middle">
+              <text x="92" y="254">A. Bio-</text><text x="92" y="265">Sponge</text>
+              <text x="152" y="254">B. Paper/</text><text x="152" y="265">Foam</text>
+              <text x="212" y="254">C. Compost</text><text x="212" y="265">(12 pots)</text>
+              <text x="272" y="254">D. Biogas</text>
+            </g>
+
+            <text x="640" y="26" text-anchor="middle" font-size="13" font-weight="bold" fill="#0d2137">Fig. 3b — Sensory Pilot Allocation (n=30 vs n=172)</text>
+            <g font-size="11" fill="#0d2137">
+              <text x="430" y="60">Pilot n=30 (10 / 10 / 10)</text>
+            </g>
+            <rect x="430" y="68" width="110" height="22" fill="#00897b"/>
+            <rect x="540" y="68" width="110" height="22" fill="#26a69a"/>
+            <rect x="650" y="68" width="110" height="22" fill="#80cbc4"/>
+            <g font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">
+              <text x="485" y="83">10 students</text>
+              <text x="595" y="83">10 educators</text>
+              <text x="705" y="83">10 artisans</text>
+            </g>
+
+            <g font-size="11" fill="#0d2137">
+              <text x="430" y="115">Yamane n=172 (103 / 34 / 35)</text>
+            </g>
+            <rect x="430" y="123" width="113" height="22" fill="#b71c1c"/>
+            <rect x="543" y="123" width="37" height="22" fill="#ef5350"/>
+            <rect x="580" y="123" width="38" height="22" fill="#ffab91"/>
+            <g font-size="10" fill="#fff" text-anchor="middle" font-weight="bold">
+              <text x="487" y="138">103</text>
+              <text x="562" y="138">34</text>
+              <text x="599" y="138">35</text>
+            </g>
+
+            <g font-size="10.5" fill="#333" text-anchor="start">
+              <rect x="430" y="170" width="12" height="12" fill="#00897b"/><text x="447" y="180">Students (180)</text>
+              <rect x="540" y="170" width="12" height="12" fill="#26a69a"/><text x="557" y="180">Educators (60)</text>
+              <rect x="650" y="170" width="12" height="12" fill="#80cbc4"/><text x="667" y="180">Artisans (60)</text>
+            </g>
+
+            <text x="430" y="226" text-anchor="middle" font-size="10.5" font-style="italic" fill="#444">Pilot (equal 10/10/10) supports feasibility and stakeholder comparison; full Yamane n=172 is</text>
+            <text x="430" y="240" text-anchor="middle" font-size="10.5" font-style="italic" fill="#444">proportionate and ≈ 5%-precise but operationally heavier. Choose one — never combine.</text>
+            <text x="430" y="262" text-anchor="middle" font-size="10" fill="#666">N=300 (180 students + 60 educators + 60 artisans); kPilot = 10; kFull ≈ 1.74.</text>
+          </svg>
+          <div class="springer-fig-caption">Fig. 3 (a) Pathway replicate distribution. (b) Reconciled sensory pilot allocation vs optional Yamane survey.</div>
+        </div>
+
+        <div class="default-figure">
+          <svg viewBox="0 0 860 320" role="img" aria-label="Figure 4: Biogas mass-balance schematic and compost growth trajectory schema">
+            <text x="430" y="22" text-anchor="middle" font-size="14" font-weight="bold" fill="#0d2137">Fig. 4 Biogas Mass-Balance Schematic &amp; Compost Growth-Trajectory Schema</text>
+
+            <rect x="30" y="50" width="120" height="60" rx="5" fill="#eef9f7" stroke="#00897b" stroke-width="1.5"/>
+            <text x="90" y="73" text-anchor="middle" font-size="11" font-weight="bold" fill="#00695c">Combined dry</text>
+            <text x="90" y="87" text-anchor="middle" font-size="11" font-weight="bold" fill="#00695c">biomass (kg)</text>
+            <text x="90" y="103" text-anchor="middle" font-size="10" fill="#333">DM × (1−MC)</text>
+
+            <rect x="180" y="50" width="120" height="60" rx="5" fill="#eef9f7" stroke="#00897b" stroke-width="1.5"/>
+            <text x="240" y="73" text-anchor="middle" font-size="11" font-weight="bold" fill="#00695c">Volatile solids</text>
+            <text x="240" y="87" text-anchor="middle" font-size="11" font-weight="bold" fill="#00695c">VS (kg)</text>
+            <text x="240" y="103" text-anchor="middle" font-size="10" fill="#333">DM × VS fraction</text>
+
+            <rect x="330" y="50" width="150" height="60" rx="5" fill="#eef9f7" stroke="#00897b" stroke-width="1.5"/>
+            <text x="405" y="73" text-anchor="middle" font-size="11" font-weight="bold" fill="#00695c">BMP constant</text>
+            <text x="405" y="87" text-anchor="middle" font-size="11" font-weight="bold" fill="#00695c">(m³ CH₄ / kg VS)</text>
+            <text x="405" y="103" text-anchor="middle" font-size="10" fill="#333">documented source</text>
+
+            <rect x="510" y="50" width="160" height="60" rx="5" fill="#eef9f7" stroke="#00897b" stroke-width="1.5"/>
+            <text x="590" y="73" text-anchor="middle" font-size="11" font-weight="bold" fill="#00695c">Theoretical CH₄ (m³)</text>
+            <text x="590" y="87" text-anchor="middle" font-size="11" font-weight="bold" fill="#00695c">LPG eq. (kg) • kWh</text>
+            <text x="590" y="103" text-anchor="middle" font-size="10" fill="#333">±10% sensitivity</text>
+
+            <path d="M 150 80 L 178 80" stroke="#0d2137" stroke-width="2" fill="none" marker-end="url(#arrowPath)"/>
+            <path d="M 300 80 L 328 80" stroke="#0d2137" stroke-width="2" fill="none" marker-end="url(#arrowPath)"/>
+            <path d="M 480 80 L 508 80" stroke="#0d2137" stroke-width="2" fill="none" marker-end="url(#arrowPath)"/>
+
+            <rect x="180" y="135" width="380" height="38" rx="5" fill="#fff3e0" stroke="#e65100" stroke-width="1.5" stroke-dasharray="6 4"/>
+            <text x="370" y="153" text-anchor="middle" font-size="11.5" font-weight="bold" fill="#e65100">⚠️ No-Digester Safety Rule — Theoretical Only</text>
+            <text x="370" y="167" text-anchor="middle" font-size="10" fill="#333">Equation-based estimate; no physical reactor is constructed, pressurized, or operated.</text>
+
+            <text x="600" y="200" text-anchor="middle" font-size="12" font-weight="bold" fill="#0d2137">Compost Growth Trajectory Schema</text>
+            <line x1="500" y1="218" x2="500" y2="298" stroke="#000" stroke-width="1.5"/>
+            <line x1="500" y1="298" x2="820" y2="298" stroke="#000" stroke-width="1.5"/>
+            <g font-size="9" fill="#333" text-anchor="end">
+              <text x="495" y="302">0</text>
+              <text x="495" y="282">5</text>
+              <text x="495" y="262">10</text>
+              <text x="495" y="242">15</text>
+              <text x="495" y="222">20</text>
+            </g>
+            <g font-size="9.5" fill="#333" text-anchor="middle">
+              <text x="500" y="312">Day 0</text>
+              <text x="580" y="312">W1</text>
+              <text x="660" y="312">W2</text>
+              <text x="740" y="312">W3</text>
+              <text x="820" y="312">W4</text>
+            </g>
+            <polyline points="500,295 580,290 660,285 740,280 820,275" fill="none" stroke="#9e9e9e" stroke-width="2"/>
+            <g fill="#9e9e9e"><circle cx="500" cy="295" r="3"/><circle cx="580" cy="290" r="3"/><circle cx="660" cy="285" r="3"/><circle cx="740" cy="280" r="3"/><circle cx="820" cy="275" r="3"/></g>
+            <text x="816" y="270" text-anchor="end" font-size="9" font-weight="bold" fill="#9e9e9e">C0 0% (control)</text>
+            <polyline points="500,295 580,275 660,255 740,235 820,225" fill="none" stroke="#2e7d32" stroke-width="2.5"/>
+            <g fill="#2e7d32"><circle cx="500" cy="295" r="3"/><circle cx="580" cy="275" r="3"/><circle cx="660" cy="255" r="3"/><circle cx="740" cy="235" r="3"/><circle cx="820" cy="225" r="3"/></g>
+            <text x="816" y="221" text-anchor="end" font-size="9" font-weight="bold" fill="#2e7d32">C1 50% (expected optimum)</text>
+            <polyline points="500,295 580,283 660,270 740,260 820,250" fill="none" stroke="#e65100" stroke-width="2"/>
+            <g fill="#e65100"><circle cx="500" cy="295" r="3"/><circle cx="580" cy="283" r="3"/><circle cx="660" cy="270" r="3"/><circle cx="740" cy="260" r="3"/><circle cx="820" cy="250" r="3"/></g>
+            <text x="816" y="262" text-anchor="end" font-size="9" font-weight="bold" fill="#e65100">C2 100% (slow start)</text>
+          </svg>
+          <div class="springer-fig-caption">Fig. 4 Left: deterministic biogas mass-balance schematic. Right: compost growth-trajectory schema.</div>
+        </div>
+      </div>
+
+      <div id="subs-container-results"></div>
+
+      <div class="section-confidence-card">
+        <div>
+          <strong>🎯 Metacognitive Monitoring:</strong> Rate your confidence for Results (0–100%):
+          <select id="conf-results" style="font-family:'Times New Roman',serif;padding:3px 8px;margin-left:6px;">
+            <option value="50">50% - Low Confidence</option>
+            <option value="75" selected>75% - Moderate Confidence</option>
+            <option value="90">90% - High Confidence</option>
+          </select>
+        </div>
+        <button class="btn btn-unlock" onclick="completeAndUnlockSection('results', 'discussion')">🔓 Complete &amp; Unlock Stage 5: Discussion (40 Min)</button>
+      </div>
+    </section>
+
+    <!-- SECTION 5: DISCUSSION -->
+    <section class="imrad-section" id="sec-discussion">
+      <div class="section-title-bar">
+        <h2>Stage 5: 4.0 Mechanistic Discussion, Circular Economy &amp; Scalability</h2>
+        <span style="font-size:12px;opacity:0.85">Session Budget: 40 Minutes</span>
+      </div>
+
+      <div class="section-toolbar">
+        <span class="toolbar-label">⚙️ Section Tools:</span>
+        <div class="toolbar-actions">
+          <button class="btn-custom-sub" onclick="openAddSubModal('discussion')">➕ Add Custom Subsection</button>
+        </div>
+      </div>
+
+      <div class="section-guide-box">
+        <strong class="guide-title">💡 Mechanistic &amp; Theoretical Directives for Discussion (4.0)</strong>
+        • Explain ionic cross-linking: Alginate's carboxylate groups (–COO⁻) gel with Ca²⁺ from CaCl₂ to form an "egg-box" matrix that locks the hybridized cellulose fiber network in place, giving the bio-sponge structural recovery.<br>
+        • Explain why a 50:50 hyacinth:straw blend is hypothesized as optimal: hyacinth contributes high amorphous cellulose for absorption; rice straw contributes rigid silica-rich fibers that resist collapse and improve porosity balance.<br>
+        • Discuss circular-economy scaling: secondary pathways (paper/foam, compost, modelled biogas, sensory pilot) reduce the project's environmental footprint and demonstrate stakeholder acceptability.
+      </div>
+
+      <div id="subs-container-discussion"></div>
+
+      <div class="section-confidence-card">
+        <div>
+          <strong>🎯 Metacognitive Monitoring:</strong> Rate your confidence for Discussion (0–100%):
+          <select id="conf-discussion" style="font-family:'Times New Roman',serif;padding:3px 8px;margin-left:6px;">
+            <option value="50">50% - Low Confidence</option>
+            <option value="75" selected>75% - Moderate Confidence</option>
+            <option value="90">90% - High Confidence</option>
+          </select>
+        </div>
+        <button class="btn btn-unlock" onclick="completeAndUnlockSection('discussion', 'references')">🔓 Complete &amp; Unlock Stage 6: References &amp; Calibration (40 Min)</button>
+      </div>
+    </section>
+
+    <!-- SECTION 6: REFERENCES & CALIBRATION -->
+    <section class="imrad-section" id="sec-references">
+      <div class="section-title-bar">
+        <h2>Stage 6: 5.0 Conclusions, References &amp; Metacognitive Reflection</h2>
+        <span style="font-size:12px;opacity:0.85">Session Budget: 40 Minutes</span>
+      </div>
+
+      <div class="section-toolbar">
+        <span class="toolbar-label">⚙️ Section Tools:</span>
+        <div class="toolbar-actions">
+          <button class="btn-custom-sub" onclick="openAddSubModal('references')">➕ Add Custom Subsection</button>
+        </div>
+      </div>
+
+      <div class="section-guide-box">
+        <strong class="guide-title">📚 APA 7th Edition Citations Bank — Group Nelly Evidence Base (10 References)</strong>
+        Every in-text citation used in your proposal must appear here with an active DOI or stable URL:<br>
+        • FAO. (2023). <i>The state of food and agriculture 2023</i>. Rome: FAO. https://doi.org/10.4060/cc3017en<br>
+        • Gunnarsson, C. C., &amp; Petersen, C. M. (2007). Water hyacinths as a resource in Africa and South-East Asia: Results of a survey and recommendations for further work. <i>AMBIO: A Journal of the Human Environment</i>, 36(5), 426–430. https://doi.org/10.1579/0044-7447(2007)36[426:WAAR]2.0.CO;2<br>
+        • Hasan, M. S., &amp; Dever, D. A. (2025). Mitigating cognitive offloading in secondary STEM education through adaptive AI spotters and scaffolded IMRAD writing engines. <i>Journal of Educational Psychology</i>, 117(3), 412–430. https://doi.org/10.1037/edu0000892<br>
+        • International Rice Research Institute (IRRI). (2022). <i>Rice straw management: Current practices and the future of bioenergy</i>. Los Baños, Philippines: IRRI. https://www.irri.org/rice-straw-management<br>
+        • Jabeen, N., Majid, F., &amp; Wani, A. B. (2021). Water hyacinth: A potential bio-resource for value-added products — A review. <i>Renewable and Sustainable Energy Reviews</i>, 145, 111079. https://doi.org/10.1016/j.rser.2021.111079<br>
+        • Lee, K. Y., &amp; Mooney, D. J. (2012). Alginate: Properties and biomedical applications. <i>Progress in Polymer Science</i>, 37(1), 106–126. https://doi.org/10.1016/j.progpolymsci.2011.06.003<br>
+        • Mandal, K. G., Misra, A. K., &amp; Singh, K. M. (2019). Rice straw — A valuable biomass and its management: A review. <i>Indian Journal of Agronomy</i>, 64(4), 437–449.<br>
+        • Sweller, J. (2011). Cognitive load theory. In J. P. Mestre &amp; B. H. Ross (Eds.), <i>The psychology of learning and motivation: Cognition in education</i> (Vol. 55, pp. 37–76). Academic Press. https://doi.org/10.1016/B978-0-12-387691-1.00002-8<br>
+        • Yamane, T. (1967). <i>Statistics: An introductory analysis</i> (2nd ed.). New York: Harper &amp; Row.<br>
+        • Zimmerman, B. J. (2000). Attaining self-regulation: A social cognitive perspective. In M. Boekaerts, P. R. Pintrich, &amp; M. Zeidner (Eds.), <i>Handbook of self-regulation</i> (pp. 13–39). Academic Press. https://doi.org/10.1016/B978-012109890-2/50031-7
+      </div>
+
+      <div id="subs-container-references"></div>
+
+      <div class="forethought-card" style="background:#f9fbe7;border-color:#dce775;">
+        <h3 class="forethought-title" style="color:#558b2f;">🎯 Final Self-Reflection &amp; Metacognitive Calibration Phase (Zimmerman Phase 3)</h3>
+        <p style="font-size:13.5px;margin-bottom:12px;color:#33691e;">
+          Compare your perceived performance against the APA 7 / IMRAD scientific criteria before generating your certified proposal.
+        </p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;font-size:13.5px;">
+          <div>
+            <label style="font-weight:bold;display:block;margin-bottom:4px;">1. Perceived Scientific Rigor (0–100%):</label>
+            <input type="number" id="postPerceivedScore" class="editor-textarea" style="min-height:36px;padding:4px 8px;" value="85" min="0" max="100">
+          </div>
+          <div>
+            <label style="font-weight:bold;display:block;margin-bottom:4px;">2. Metacognitive Effort Exerted:</label>
+            <select id="postEffortRating" class="editor-textarea" style="min-height:36px;padding:4px 8px;">
+              <option value="High">High (Engaged deeply with Socratic AI and data synthesis)</option>
+              <option value="Moderate" selected>Moderate (Used sentence stems and guidance)</option>
+              <option value="Low">Low (Felt writing was effortless)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:25px;display:flex;justify-content:center;gap:15px;flex-wrap:wrap;">
+        <button class="btn btn-pdf" style="font-size:16px;padding:12px 28px;" onclick="compileAndPrintPdf()">🎓 Download Committee-Ready IMRAD Proposal (PDF)</button>
+        <button class="btn btn-report" style="font-size:16px;padding:12px 28px;" onclick="generateDiagnosticReport()">📊 Generate Performance &amp; Trace Report</button>
+      </div>
+    </section>
+
+  </article>
+
+  <aside class="sidebar-col">
+    <div class="sidebar-card">
+      <div class="sidebar-title">
+        <span>🧠 SRL Cognitive Spotter</span>
+        <span class="srl-state-badge status-flow" id="sidebarSrlBadge">🟢 Flow State</span>
+      </div>
+      <p style="font-size:12.5px;color:#555;margin-bottom:10px;">
+        Real-time telemetry monitoring pauses, typing bursts, and scaffolding gradients (Hasan &amp; Dever, 2025).
+      </p>
+
+      <div class="trace-stat-grid">
+        <div class="trace-stat-box">
+          <div class="trace-stat-val" id="telemetryClicks">0</div>
+          <div class="trace-stat-lbl">Clicks Logged</div>
+        </div>
+        <div class="trace-stat-box">
+          <div class="trace-stat-val" id="telemetryPauses">0</div>
+          <div class="trace-stat-lbl">Pauses (&gt;5s)</div>
+        </div>
+        <div class="trace-stat-box">
+          <div class="trace-stat-val" id="telemetryWpm">0</div>
+          <div class="trace-stat-lbl">Avg WPM</div>
+        </div>
+        <div class="trace-stat-box">
+          <div class="trace-stat-val" id="telemetryRevisions">0</div>
+          <div class="trace-stat-lbl">Revisions / Deletions</div>
+        </div>
+      </div>
+
+      <div style="margin-top:10px;font-size:12px;background:#f5f5f5;padding:8px;border-radius:3px;border:1px solid #e0e0e0;">
+        <strong>Cognitive State:</strong> <span id="telemetryStateDesc">Active formulation &amp; typing</span><br>
+        <strong>Current Pause:</strong> <span id="telemetryCurrentPause">0s</span> | <strong>Max Pause:</strong> <span id="telemetryMaxPause">0s</span>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-title">
+        <span>🛡️ Anti-Offloading Guardrail</span>
+        <span style="font-size:11px;background:#ffebee;color:#b71c1c;padding:2px 6px;border-radius:3px;font-weight:bold;">Active</span>
+      </div>
+      <div style="font-size:13px;margin-bottom:8px;">
+        <strong>Blocked Copy-Paste Events:</strong> <span id="blockedPasteDisplay" style="color:#b71c1c;font-weight:bold;">0</span>
+      </div>
+      <p style="font-size:12px;color:#666;">
+        Direct pasting from external sources is intercepted to compel active cognitive schema reconstruction.
+      </p>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-title">
+        <span>📝 Word Count Summary</span>
+        <span style="font-size:12px;font-weight:bold;" id="totalWordCountDisplay">0 words</span>
+      </div>
+      <div style="font-size:12.5px;display:flex;flex-direction:column;gap:6px;" id="sectionWordCountsList">
+        <div>1.0 Introduction: <span id="wc-intro" style="font-weight:bold;">0</span> / 250w</div>
+        <div>2.0 Methods: <span id="wc-methods" style="font-weight:bold;">0</span> / 350w</div>
+        <div>3.0 Results: <span id="wc-results" style="font-weight:bold;">0</span> / 200w</div>
+        <div>4.0 Discussion: <span id="wc-discussion" style="font-weight:bold;">0</span> / 300w</div>
+        <div>5.0 Conclusions: <span id="wc-references" style="font-weight:bold;">0</span> / 150w</div>
+      </div>
+    </div>
+
+    <div class="sidebar-card" style="background:#fbfbfb;">
+      <div class="sidebar-title"><span>🌿 Group Nelly Design Key</span></div>
+      <div style="font-size:12px;color:#444;line-height:1.5;">
+        • <strong>Dual Feedstocks:</strong> Water Hyacinth (<i>Eichhornia crassipes</i>) + Rice Straw (<i>Oryza sativa</i>)<br>
+        • <strong>Primary Innovation:</strong> Ionic cross-linked bio-sponge (sodium alginate + CaCl₂)<br>
+        • <strong>5 Pathways:</strong> A. Bio-Sponge (n=15) • B. Paper/Foam (n=10) • C. Compost (12 pots) • D. Biogas (model) • E. Sensory (n=30)<br>
+        • <strong>Sampling:</strong> Pilot n=30 (10/10/10) or Yamane n=172 (≈103/34/35)<br>
+        • <strong>Safety Gate:</strong> No digester; non-edible test plants; daily QA lock
+      </div>
+    </div>
+  </aside>
+</main>
+
+<div class="anti-paste-toast" id="antiPasteToast">
+  <span style="font-size:22px;">🛑</span>
+  <div>
+    <strong>Zero-Paste Guardrail Triggered!</strong><br>
+    External copy-pasting is strictly prohibited in every writing and metadata field of this engine (zero-paste rule, Hasan &amp; Dever, 2025). Articulate scientific thoughts in your own words using the inline AI Spotter buttons and the 📚 Knowledge Bank.
+  </div>
+</div>
+
+<div class="modal-overlay" id="shaperModal">
+  <div class="modal-box modal-box-wide">
+    <div class="modal-title">
+      <span>✨ Adaptive Engine: Gradual Writing Shaper</span>
+      <button class="modal-close-btn" onclick="closeShaperModal()">✕</button>
+    </div>
+    <div style="font-size:13.5px;color:#444;margin-bottom:15px;" id="shaperContextInfo">
+      Analyzing current draft for: <strong>1.1 Background, Dual-Waste Problem Statement, &amp; Research Gap</strong>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-bottom:15px;">
+      <div>
+        <label style="font-weight:bold;font-size:13px;display:block;margin-bottom:4px;">Your Current Draft:</label>
+        <textarea id="shaperCurrentText" class="editor-textarea" style="min-height:180px;background:#fdfdfd;" readonly></textarea>
+      </div>
+      <div>
+        <label style="font-weight:bold;font-size:13px;display:block;margin-bottom:4px;">AI Gradual Refinement Feedback:</label>
+        <div id="shaperAiFeedback" style="background:#f0f7ff;border:1.5px solid #b2d4ff;padding:12px;border-radius:4px;min-height:180px;font-size:13.5px;color:#0d2137;overflow-y:auto;">
+          Click a shaping stage below to analyze your writing...
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid #d1c7b7;padding-top:15px;flex-wrap:gap:10px;">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="btn btn-navy" onclick="runShaperStep(1)">1. Clarity & Structure</button>
+        <button class="btn btn-gold" onclick="runShaperStep(2)">2. Framework Data Integration</button>
+        <button class="btn btn-report" onclick="runShaperStep(3)">3. Committee Polish</button>
+      </div>
+      <button class="btn btn-navy" onclick="closeShaperModal()">Done / Return to Writing</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="teacherDashboardModal">
+  <div class="modal-box modal-box-wide">
+    <div class="modal-title">
+      <span>👨🏫 Teacher Orchestration & Real-Time Monitoring Dashboard</span>
+      <button class="modal-close-btn" onclick="closeTeacherDashboard()">✕</button>
+    </div>
+    <div style="font-size:13px;color:#555;margin-bottom:15px;">
+      Classroom: <strong>SMBP 2.4 | Chalermkwansatree School | Group Nelly (G3)</strong> | Target Task: <strong>Dual-Waste Valorization IMRAD Proposal</strong> | Active Condition: <strong id="tdConditionLabel">C4 — Adaptive GenAI + Enhanced Teacher</strong><br>
+      <span id="tdConditionNote" style="font-size:12px;color:#0d47a1;">Enhanced Teacher arm: full orchestration active (pedagogical actions logged to the research trace stream).</span>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:15px;">
+      <div class="trace-stat-box"><div class="trace-stat-val" id="tdStudentStatus">🟢 In Flow</div><div class="trace-stat-lbl">Student State</div></div>
+      <div class="trace-stat-box"><div class="trace-stat-val" id="tdStruggleScore">Low (15%)</div><div class="trace-stat-lbl">Struggle Index</div></div>
+      <div class="trace-stat-box"><div class="trace-stat-val" id="tdTotalPauses">0</div><div class="trace-stat-lbl">Hesitations / Pauses</div></div>
+      <div class="trace-stat-box"><div class="trace-stat-val" id="tdAlertCount">0</div><div class="trace-stat-lbl">Teacher Alerts</div></div>
+    </div>
+
+    <h4 style="font-size:14px;color:var(--academic-navy);margin-bottom:8px;">Teacher Pedagogical Actions (Logged to the Research Trace Stream):</h4>
+    <div id="teacherPedagogicalActions" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px;">
+      <button class="btn btn-navy" onclick="logTeacherAction('T_VERBAL_NUDGE')">🗣️ Verbal Socratic Nudge</button>
+      <button class="btn btn-gold" onclick="logTeacherAction('T_DATA_EXPLAIN')">📊 Explain Pathway Data (Tables 1 &amp; 2)</button>
+      <button class="btn btn-report" onclick="logTeacherAction('T_REDIRECT')">🔄 Metacognitive Redirect</button>
+      <button class="btn btn-pdf" onclick="logTeacherAction('T_EXTEND_TIME')">⏱️ Extend Section (+10 min)</button>
+      <button class="btn" style="background:#2e7d32;color:#fff;" onclick="logTeacherAction('T_PRAISE')">⭐ Praise Autonomy & Flow</button>
+    </div>
+
+    <h4 style="font-size:14px;color:var(--academic-navy);margin-bottom:6px;">Teacher Action Log History:</h4>
+    <div id="teacherActionLogHistory" style="background:#f9f9f9;border:1px solid #e0e0e0;padding:8px 12px;border-radius:4px;max-height:130px;overflow-y:auto;font-size:12.5px;color:#333;">
+      <em>No teacher interventions logged yet for this session.</em>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="conditionModal">
+  <div class="modal-box">
+    <div class="modal-title">
+      <span>🔬 Adaptive Engine — 2×2 Orchestration Condition Selector (C1–C4)</span>
+      <button class="modal-close-btn" onclick="closeConditionModal()">✕</button>
+    </div>
+    <p style="font-size:13.5px;color:#444;margin-bottom:15px;">
+      Configure the randomized scaffolding condition for this group / classroom section. The selection is applied <strong>behaviorally</strong>: factor 1 = GenAI adaptive capability (Restricted vs. Adaptive), factor 2 = teacher support (Standard vs. Enhanced).
+    </p>
+
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;font-size:14px;">
+      <label style="background:#fdfaf3;border:1.5px solid #d1c7b7;padding:10px;border-radius:4px;cursor:pointer;">
+        <input type="radio" name="expCond" value="C1" onchange="setExperimentCondition('C1')">
+        <strong>Condition 1: Restricted GenAI + Standard Teacher</strong><br>
+        <span style="font-size:12px;color:#666;">Spotter Levels 2–4 and Writing Shaper are locked; Teacher Panel and automated stagnation alerts are disabled.</span>
+      </label>
+      <label style="background:#fdfaf3;border:1.5px solid #d1c7b7;padding:10px;border-radius:4px;cursor:pointer;">
+        <input type="radio" name="expCond" value="C2" onchange="setExperimentCondition('C2')">
+        <strong>Condition 2: Restricted GenAI + Enhanced Teacher Scaffolding</strong><br>
+        <span style="font-size:12px;color:#666;">AI stays at Level 1 (Restricted), but Enhanced Teacher is enabled: Teacher Panel visible and stagnation alerts flagged.</span>
+      </label>
+      <label style="background:#fdfaf3;border:1.5px solid #d1c7b7;padding:10px;border-radius:4px;cursor:pointer;">
+        <input type="radio" name="expCond" value="C3" onchange="setExperimentCondition('C3')">
+        <strong>Condition 3: Adaptive GenAI + Standard Teacher</strong><br>
+        <span style="font-size:12px;color:#666;">Full 4-tier adaptive scaffolding gradient and Writing Shaper active; Teacher Panel disabled.</span>
+      </label>
+      <label style="background:#eef7ff;border:1.5px solid #1976d2;padding:10px;border-radius:4px;cursor:pointer;">
+        <input type="radio" name="expCond" value="C4" checked onchange="setExperimentCondition('C4')">
+        <strong>Condition 4: Adaptive GenAI + Enhanced Teacher (Full Protocol)</strong><br>
+        <span style="font-size:12px;color:#0d47a1;">Full 4-tier adaptive AI Spotter + Gradual Shaper + Knowledge Bank + Real-time Teacher Orchestration dashboard.</span>
+      </label>
+    </div>
+
+    <div style="text-align:right;">
+      <button class="btn btn-navy" onclick="closeConditionModal()">Confirm & Apply Condition</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="addSubModal">
+  <div class="modal-box">
+    <div class="modal-title">
+      <span>➕ Add Custom Subsection</span>
+      <button class="modal-close-btn" onclick="closeAddSubModal()">✕</button>
+    </div>
+    <div style="margin-bottom:12px;">
+      <label class="meta-label">Subsection Number & Title:</label>
+      <input type="text" id="newSubTitle" class="editor-textarea" style="min-height:38px;padding:6px 10px;" placeholder="e.g., 2.3 Fiber Morphology & Sieve-Analysis Quality Control">
+    </div>
+    <div style="margin-bottom:12px;">
+      <label class="meta-label">Target Word Count:</label>
+      <input type="text" id="newSubTarget" class="editor-textarea" style="min-height:38px;padding:6px 10px;" placeholder="e.g., 100–150 words">
+    </div>
+    <div style="margin-bottom:15px;">
+      <label class="meta-label">Guiding Scientific Prompt (Optional):</label>
+      <input type="text" id="newSubPrompt" class="editor-textarea" style="min-height:38px;padding:6px 10px;" placeholder="e.g., Describe fiber-length distribution after 1–2 mm sieving...">
+    </div>
+    <div style="text-align:right;display:flex;justify-content:flex-end;gap:8px;">
+      <button class="btn btn-navy" onclick="confirmAddSub()">Add Subsection</button>
+      <button class="btn btn-gold" onclick="closeAddSubModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="tableModal">
+  <div class="modal-box">
+    <div class="modal-title">
+      <span>📊 Insert Springer / APA 7 Formatted Table</span>
+      <button class="modal-close-btn" onclick="closeTableModal()">✕</button>
+    </div>
+    <div style="margin-bottom:10px;">
+      <label class="meta-label">Table Title & Caption:</label>
+      <input type="text" id="tblCaption" class="editor-textarea" style="min-height:36px;padding:6px 10px;" placeholder="e.g., Table 3: Bio-Sponge Physical Properties by Blend (Mean ± SD, n = 5 per blend)">
+    </div>
+    <div style="margin-bottom:10px;">
+      <label class="meta-label">Headers (Comma separated):</label>
+      <input type="text" id="tblHeaders" class="editor-textarea" style="min-height:36px;padding:6px 10px;" value="Blend Code, Absorption (g/g), Porosity (%), Density (g/cm³), Compression Recovery (%)">
+    </div>
+    <div style="margin-bottom:12px;">
+      <label class="meta-label">Rows (One row per line, comma separated values):</label>
+      <textarea id="tblRows" class="editor-textarea" style="min-height:90px;" placeholder="E1 70:30, [mean ± SD], [mean ± SD], [mean ± SD], [mean ± SD]
+E2 50:50, [mean ± SD], [mean ± SD], [mean ± SD], [mean ± SD]
+E3 30:70, [mean ± SD], [mean ± SD], [mean ± SD], [mean ± SD]"></textarea>
+    </div>
+    <div style="text-align:right;display:flex;justify-content:flex-end;gap:8px;">
+      <button class="btn btn-navy" onclick="confirmInsertTable()">Insert Table</button>
+      <button class="btn btn-gold" onclick="closeTableModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="chartModal">
+  <div class="modal-box">
+    <div class="modal-title">
+      <span>📈 Insert Scientific SVG Chart</span>
+      <button class="modal-close-btn" onclick="closeChartModal()">✕</button>
+    </div>
+    <div style="margin-bottom:10px;">
+      <label class="meta-label">Figure Caption:</label>
+      <input type="text" id="chartCaption" class="editor-textarea" style="min-height:36px;padding:6px 10px;" value="Fig. 5 (Student Figure) Mean Water Absorption (g/g) by Blend — enter your measured means">
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;">
+      <div>
+        <label class="meta-label">X-Axis Categories (Comma separated):</label>
+        <input type="text" id="chartXLabels" class="editor-textarea" style="min-height:36px;padding:6px 10px;" value="E1 70:30, E2 50:50, E3 30:70">
+      </div>
+      <div>
+        <label class="meta-label">Y-Axis Values (Comma separated numbers):</label>
+        <input type="text" id="chartYValues" class="editor-textarea" style="min-height:36px;padding:6px 10px;" value="8.5, 9.6, 8.9">
+      </div>
+    </div>
+    <div style="text-align:right;display:flex;justify-content:flex-end;gap:8px;">
+      <button class="btn btn-navy" onclick="confirmInsertChart()">Insert Chart</button>
+      <button class="btn btn-gold" onclick="closeChartModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="imageModal">
+  <div class="modal-box">
+    <div class="modal-title">
+      <span>🖼️ Attach Scientific Diagram / Experimental Image</span>
+      <button class="modal-close-btn" onclick="closeImageModal()">✕</button>
+    </div>
+    <div style="margin-bottom:10px;">
+      <label class="meta-label">Figure Caption:</label>
+      <input type="text" id="imageCaption" class="editor-textarea" style="min-height:36px;padding:6px 10px;" placeholder="e.g., Fig. 5 (Student Figure) Photograph of cured bio-sponge specimens E1–E3">
+    </div>
+    <div style="margin-bottom:15px;">
+      <label class="meta-label">Select Image File (PNG/JPG):</label>
+      <input type="file" id="imageFileInput" accept="image/*" style="font-family:'Times New Roman',serif;">
+    </div>
+    <div style="text-align:right;display:flex;justify-content:flex-end;gap:8px;">
+      <button class="btn btn-navy" onclick="confirmInsertImage()">Attach Image</button>
+      <button class="btn btn-gold" onclick="closeImageModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="knowledgeBankModal">
+  <div class="modal-box modal-box-wide">
+    <div class="modal-title">
+      <span>📚 Group Nelly Knowledge Bank — Dual-Waste Valorization Framework</span>
+      <button class="modal-close-btn" onclick="closeKnowledgeBank()">✕</button>
+    </div>
+    <p style="font-size:12.5px;color:#555;margin-bottom:14px;">
+      Complete methodological reference integrated from <i>Water_Hyacinth_Rice_Straw_Conceptual_Methodology_Framework.docx</i> and <i>.xlsx</i>.
+    </p>
+
+    <details class="kb-accordion" open>
+      <summary>📋 1. Framework Dashboard — Problem → Pathway → Decision → Impact</summary>
+      <div class="kb-body">
+        <p><strong>Integrated decision rule:</strong> Recommend the final prototype only when the primary Bio-Sponge treatment demonstrates superior physical performance, reproducibility across planned replicates, safety gates satisfied, and blinded user acceptance favorable.</p>
+      </div>
+    </details>
+
+    <details class="kb-accordion">
+      <summary>🧪 2. Study Design & Samples — Five Convergent Components</summary>
+      <div class="kb-body">
+        <p>A. Bio-Sponge (n=15) • B. Paper/Foam (n=10) • C. Compost (12 pots) • D. Biogas (model, no digester) • E. Sensory (pilot n=30, 10/10/10; or Yamane n=172).</p>
+      </div>
+    </details>
+
+    <div style="text-align:right;margin-top:6px;">
+      <button class="btn btn-navy" onclick="closeKnowledgeBank()">Close & Return to Writing</button>
+    </div>
+  </div>
+</div>
+
+<div id="printManuscriptContainer"></div>
+<div id="printReportContainer"></div>
+
+<script>
+let sectionSubs = {
+  intro: [
+    {
+      id: 1,
+      title: "1.1 Background, Dual-Waste Problem Statement, & Research Gap",
+      placeholder: "Articulate the river-blockage impact of invasive water hyacinth (Eichhornia crassipes), the PM2.5 burden of open-field rice-straw burning, and dual-waste valorization...",
+      target: "100–180 words",
+      assets: []
+    },
+    {
+      id: 2,
+      title: "1.2 Research Objectives & Five Research Questions (RQ1–RQ5) with Operational Hypotheses",
+      placeholder: "Formulate the five research questions with independent/dependent variables and operational hypotheses...",
+      target: "80–150 words",
+      assets: []
+    }
+  ],
+  methods: [
+    {
+      id: 1,
+      title: "2.1 Feedstock Pre-Processing & Primary Bio-Sponge Production Protocol (Pathway A)",
+      placeholder: "Document batch-labeled collection, washing, air-drying, grinding and 1–2 mm sieving, then ionic cross-linking (sodium alginate + CaCl₂, 10×10 cm mold, E1/E2/E3 blends, 5 replicates each)...",
+      target: "120–200 words",
+      assets: []
+    },
+    {
+      id: 2,
+      title: "2.2 Supporting Pathways, Instruments, Sampling & Data Governance (B–E)",
+      placeholder: "Describe paper P0/P1 hang test, 12-pot compost trial, deterministic biogas model (no digester), blinded A/B sensory pilot (n=30), and RAW/CLEAN/ANALYSIS rules...",
+      target: "120–200 words",
+      assets: []
+    }
+  ],
+  results: [
+    {
+      id: 1,
+      title: "3.1 Synthesis of Pathway Evidence Structure, Replication Targets & Analysis Mapping",
+      placeholder: "Synthesize the evidence architecture: 15 sponge replicates, 10 sheets, 12 pots, 1 modelled scenario, 30 paired evaluators...",
+      target: "140–220 words",
+      assets: []
+    }
+  ],
+  discussion: [
+    {
+      id: 1,
+      title: "4.1 Mechanistic Interpretation: Ionic Cross-Linking & Fiber-Network Physics",
+      placeholder: "Explain how Ca²⁺–alginate 'egg-box' junction zones lock the hybrid cellulose network, and why 50:50 balances absorption vs recovery...",
+      target: "100–180 words",
+      assets: []
+    },
+    {
+      id: 2,
+      title: "4.2 Circular-Economy Integration, Biogas Modelling & Sensory Acceptability",
+      placeholder: "Discuss secondary pathways closing the material loop, and blinded paired sensory pilot acceptance...",
+      target: "100–180 words",
+      assets: []
+    }
+  ],
+  references: [
+    {
+      id: 1,
+      title: "5.1 Conclusion & Strategic STEM Recommendations",
+      placeholder: "Summarize major design decisions and future directions...",
+      target: "60–100 words",
+      assets: []
+    },
+    {
+      id: 2,
+      title: "6.1 References (APA 7th Edition with DOIs)",
+      placeholder: "List all APA 7th edition citations supporting this study...",
+      target: "4–6 formal citations",
+      assets: []
+    }
+  ]
+};
+
+let telemetry = {
+  participant_id: "P_G3NELLY_01",
+  class_id: "SMBP_2.4_G3",
+  session_id: "S_" + Date.now(),
+  current_condition: "C4",
+  total_clicks: 0,
+  total_pauses: 0,
+  max_pause_ms: 0,
+  current_pause_ms: 0,
+  total_keystrokes: 0,
+  total_backspaces: 0,
+  total_revisions: 0,
+  blocked_pastes: 0,
+  teacher_alerts: 0,
+  active_state: "flow",
+  trace_log: [],
+  teacher_action_log: []
+};
+
+let currentSection = "setup";
+let unlockedSections = new Set(["setup"]);
+let completedSections = new Set();
+let sectionTimers = {
+  intro: 40 * 60,
+  methods: 40 * 60,
+  results: 40 * 60,
+  discussion: 40 * 60,
+  references: 40 * 60
+};
+let activeTimerInterval = null;
+let pauseWatchInterval = null;
+let lastKeystrokeTime = Date.now();
+let activeTargetSubForAsset = { sec: null, subId: null };
+let activeTargetSubForShaper = { sec: null, subId: null };
+let hasTriggeredStagnationAlert = false;
+
+window.addEventListener("DOMContentLoaded", () => {
+  attachGlobalAntiPaste();
+  renderAllSubsections();
+  restoreStateFromLocalStorage();
+  attachGlobalTraceListeners();
+  applyConditionToUI();
+  startTelemetryWatchers();
+  updateTelemetryUI();
+});
+
+function logTraceEvent(eventType, target, extra = {}) {
+  const now = new Date();
+  const eventRecord = {
+    participant_id: telemetry.participant_id,
+    class_id: telemetry.class_id,
+    session_id: telemetry.session_id,
+    timestamp_utc: now.toISOString(),
+    section_id: currentSection,
+    event_type: eventType,
+    event_target: target || "system",
+    latency_ms: Date.now() - lastKeystrokeTime,
+    scaffold_level_active: extra.level || 0,
+    state_inferred: telemetry.active_state,
+    accept_reject_revision: extra.revision_type || "none",
+    condition: telemetry.current_condition,
+    extra_details: extra
+  };
+  telemetry.trace_log.push(eventRecord);
+  saveStateToLocalStorage();
+}
+
+function renderAllSubsections() {
+  const sections = ["intro", "methods", "results", "discussion", "references"];
+  sections.forEach(sec => renderSectionSubs(sec));
+}
+
+function renderSectionSubs(sec) {
+  const container = document.getElementById(`subs-container-${sec}`);
+  if (!container) return;
+  container.innerHTML = "";
+
+  const subs = sectionSubs[sec] || [];
+  subs.forEach(sub => {
+    const card = document.createElement("div");
+    card.className = "subsection-block";
+    card.id = `sub-block-${sec}-${sub.id}`;
+
+    card.innerHTML = `
+      <div class="subsection-header">
+        <span class="subsection-title">
+          <span id="title-text-${sec}-${sub.id}">${sanitizeScientificTypography(sub.title)}</span>
+        </span>
+        <div class="sub-controls">
+          <button class="btn-asset" onclick="openTableModalFor('${sec}', ${sub.id})">📊 + Table</button>
+          <button class="btn-asset" onclick="openChartModalFor('${sec}', ${sub.id})">📈 + Graph</button>
+          <button class="btn-asset" onclick="openImageModalFor('${sec}', ${sub.id})">🖼️ + Image</button>
+          <button class="sub-icon-btn" onclick="renameSub('${sec}', ${sub.id})">✏️ Rename</button>
+          ${sub.id > 2 ? `<button class="sub-icon-btn" onclick="deleteSub('${sec}', ${sub.id})" style="color:#b71c1c;">🗑️ Delete</button>` : ""}
+        </div>
+      </div>
+
+      <div class="inline-ai-spotter" id="spotter-${sec}-${sub.id}">
+        <div class="spotter-header">
+          <div>
+            <span style="font-weight:bold;color:#0d47a1;">🧠 In-Situ AI Spotter:</span>
+            <span class="spotter-status-pill status-flow" id="spotter-pill-${sec}-${sub.id}">🟢 Flow State</span>
+          </div>
+          <span style="font-size:11px;color:#2e7d32;font-weight:bold;" id="spotter-timer-${sec}-${sub.id}">⏱️ Pause: 0s</span>
+        </div>
+        <div class="spotter-actions">
+          <button class="spotter-btn spotter-btn-l1" onclick="triggerInlineScaffold('${sec}', ${sub.id}, 1)">💡 1. Socratic Brainstorm</button>
+          <button class="spotter-btn spotter-btn-l2" onclick="triggerInlineScaffold('${sec}', ${sub.id}, 2)">🔄 2. Data Redirect</button>
+          <button class="spotter-btn spotter-btn-l3" onclick="triggerInlineScaffold('${sec}', ${sub.id}, 3)">📝 3. Intensified Frame</button>
+          <button class="spotter-btn spotter-btn-l4" onclick="triggerInlineScaffold('${sec}', ${sub.id}, 4)">⭐ 4. Autonomy Fading</button>
+          <button class="spotter-btn spotter-btn-shape" onclick="openShaperFor('${sec}', ${sub.id})">✨ Gradual Shaper</button>
+        </div>
+        <div class="spotter-response-area" id="spotter-res-${sec}-${sub.id}"></div>
+      </div>
+
+      <textarea id="text-${sec}-${sub.id}" class="editor-textarea" placeholder="${sub.placeholder}" oninput="handleSubInput('${sec}', ${sub.id})"></textarea>
+
+      <div class="word-counter-row">
+        <span id="wc-${sec}-${sub.id}">Words: 0 | Target: ${sub.target}</span>
+        <div class="telemetry-micro-stats">
+          <span id="burst-${sec}-${sub.id}">WPM: 0</span>
+          <span id="pauses-${sec}-${sub.id}">Pauses: ${telemetry.sub_pauses && telemetry.sub_pauses[`${sec}_${sub.id}`] ? telemetry.sub_pauses[`${sec}_${sub.id}`] : 0}</span>
+        </div>
+      </div>
+
+      <div class="sub-assets-area" id="assets-${sec}-${sub.id}"></div>
+    `;
+
+    container.appendChild(card);
+
+    const textarea = card.querySelector(`#text-${sec}-${sub.id}`);
+    attachAntiPaste(textarea);
+    attachTelemetryToEditor(textarea, sec, sub.id);
+
+    // FIX 1: Render existing assets on restore
+    if (sub.assets && sub.assets.length > 0) {
+      renderSubAssets(sec, sub.id);
+    }
+  });
+}
+
+function triggerInlineScaffold(sec, subId, level) {
+  const resArea = document.getElementById(`spotter-res-${sec}-${subId}`);
+  if (!resArea) return;
+
+  if (level > 1 && isRestrictedAI()) {
+    const cond = telemetry.current_condition;
+    logTraceEvent("scaffold_blocked_by_condition", `sub_${sec}_${subId}`, { level: level, condition: cond });
+    resArea.style.display = "block";
+    resArea.innerHTML = `🔒 <strong>Condition ${cond} gate (Restricted GenAI):</strong> Scaffolding Levels 2–4 locked. Work from Level 1 Socratic prompts.`;
+    return;
+  }
+
+  telemetry.total_clicks++;
+  logTraceEvent("ai_scaffold_request", `sub_${sec}_${subId}`, { level: level });
+
+  const currentText = (document.getElementById(`text-${sec}-${subId}`)?.value || "").trim();
+  const wc = currentText ? currentText.split(/\s+/).filter(Boolean).length : 0;
+
+  let msg = "";
+  if (level === 1) {
+    msg = `💡 <strong>Socratic Brainstorming:</strong> Reflect on your independent and dependent variables. What primary scientific mechanism explains this relationship?`;
+  } else if (level === 2) {
+    msg = `🔄 <strong>Metacognitive Data Redirect:</strong> Connect your argument directly to Table 1 design specifications or Table 2 sampling parameters. Cite concrete units and replication counts.`;
+  } else if (level === 3) {
+    msg = `📝 <strong>Sentence Frames:</strong> <em>"Experimental investigation revealed that..."</em> and <em>"These observations are consistent with the hypothesis that..."</em>`;
+  } else {
+    msg = `⭐ <strong>Autonomy Check:</strong> Current word count: ${wc} words. Verify that your writing maintains third-person objective voice and precise scientific notation.`;
+  }
+
+  resArea.innerHTML = msg;
+  resArea.style.display = "block";
+}
+
+function openShaperFor(sec, subId) {
+  if (isRestrictedAI()) {
+    alert("🔒 Gradual Writing Shaper is locked under Condition " + telemetry.current_condition + " (Restricted GenAI).");
+    return;
+  }
+  activeTargetSubForShaper = { sec, subId };
+  telemetry.total_clicks++;
+  const textEl = document.getElementById(`text-${sec}-${subId}`);
+  const currentText = (textEl?.value || "").trim();
+  const subObj = sectionSubs[sec]?.find(s => s.id === subId);
+  const title = subObj?.title || `${sec.toUpperCase()} Subsection ${subId}`;
+
+  document.getElementById("shaperContextInfo").innerHTML = `Analyzing draft for: <strong>${sanitizeScientificTypography(title)}</strong>`;
+  document.getElementById("shaperCurrentText").value = currentText || "[No text written yet]";
+  document.getElementById("shaperAiFeedback").innerHTML = currentText
+    ? `Draft loaded (${currentText.split(/\s+/).filter(Boolean).length} words). Select a refinement stage below.`
+    : `<span style="color:#b71c1c;">Please write a draft in the subsection box first.</span>`;
+
+  document.getElementById("shaperModal").classList.add("show");
+  logTraceEvent("shaper_opened", `sub_${sec}_${subId}`);
+}
+
+function closeShaperModal() {
+  document.getElementById("shaperModal").classList.remove("show");
+}
+
+function runShaperStep(step) {
+  telemetry.total_clicks++;
+  const feedbackBox = document.getElementById("shaperAiFeedback");
+  if (step === 1) {
+    feedbackBox.innerHTML = "<strong>Step 1: Clarity & Structure:</strong> Verify dual-waste problem definition and active scientific voice.";
+  } else if (step === 2) {
+    feedbackBox.innerHTML = "<strong>Step 2: Framework Data Integration:</strong> Cross-reference independent and dependent variables with Table 1.";
+  } else {
+    feedbackBox.innerHTML = "<strong>Step 3: Committee Polish:</strong> Ensure formal APA 7 style and third-person scholarly register.";
+  }
+  logTraceEvent("shaper_step_executed", `step_${step}`);
+}
+
+let activeEditorContext = { sec: "intro", subId: 1 };
+let isPauseEpisodeActive = false;
+let pauseEpisodeStartTime = null;
+
+function attachGlobalTraceListeners() {
+  document.addEventListener("click", (e) => {
+    telemetry.total_clicks++;
+    updateTelemetryUI();
+  });
+}
+
+function refreshSubsectionSpotterStates() {
+  const activeSec = currentSection || "intro";
+  const subs = sectionSubs[activeSec] || [];
+  subs.forEach(sub => {
+    const isCurrentActive = (activeSec === activeEditorContext.sec && sub.id === activeEditorContext.subId);
+    const timerEl = document.getElementById(`spotter-timer-${activeSec}-${sub.id}`);
+    const pillEl = document.getElementById(`spotter-pill-${activeSec}-${sub.id}`);
+    const spotterBox = document.getElementById(`spotter-${activeSec}-${sub.id}`);
+
+    if (isCurrentActive) {
+      if (spotterBox) spotterBox.classList.add("spotter-active");
+      if (timerEl) { timerEl.innerText = "⏱️ Active Pause: 0s"; timerEl.style.color = "#2e7d32"; }
+      if (pillEl) { pillEl.className = "spotter-status-pill status-flow"; pillEl.innerText = "🟢 Flow State"; }
+    } else {
+      if (spotterBox) spotterBox.classList.remove("spotter-active");
+      if (timerEl) { timerEl.innerText = "⏱️ Standby"; timerEl.style.color = "#777"; }
+      if (pillEl) { pillEl.className = "spotter-status-pill status-standby"; pillEl.innerText = "⚪ Standby"; }
+    }
+  });
+}
+
+function attachTelemetryToEditor(textarea, sec, subId) {
+  let burstKeys = 0;
+  let burstStart = Date.now();
+
+  textarea.addEventListener("focus", () => {
+    if (activeEditorContext.sec !== sec || activeEditorContext.subId !== subId) {
+      if (isPauseEpisodeActive) {
+        const pauseDuration = Date.now() - (pauseEpisodeStartTime || lastKeystrokeTime);
+        logTraceEvent("pause_ended", `${activeEditorContext.sec}_${activeEditorContext.subId}`, { duration_ms: pauseDuration });
+        isPauseEpisodeActive = false;
+      }
+      activeEditorContext = { sec: sec, subId: subId };
+      lastKeystrokeTime = Date.now();
+      telemetry.current_pause_ms = 0;
+      hasTriggeredStagnationAlert = false;
+      refreshSubsectionSpotterStates();
+      logTraceEvent("subsection_focused", `${sec}_${subId}`);
+    }
+  });
+
+  textarea.addEventListener("keydown", (e) => {
+    telemetry.total_keystrokes++;
+    activeEditorContext = { sec: sec, subId: subId };
+
+    if (isPauseEpisodeActive) {
+      const pauseDuration = Date.now() - (pauseEpisodeStartTime || lastKeystrokeTime);
+      logTraceEvent("pause_ended", `${sec}_${subId}`, { duration_ms: pauseDuration });
+      isPauseEpisodeActive = false;
+    }
+
+    lastKeystrokeTime = Date.now();
+    hasTriggeredStagnationAlert = false;
+    burstKeys++;
+
+    if (e.key === "Backspace" || e.key === "Delete") {
+      telemetry.total_backspaces++;
+      telemetry.total_revisions++;
+    }
+
+    telemetry.current_pause_ms = 0;
+    updateStatePill(sec, subId, "flow", "🟢 Flow State");
+    const timerEl = document.getElementById(`spotter-timer-${sec}-${subId}`);
+    if (timerEl) {
+      timerEl.innerText = "⏱️ Active Pause: 0s";
+      timerEl.style.color = "#2e7d32";
+    }
+  });
+
+  textarea.addEventListener("keyup", (e) => {
+    const elapsedSec = (Date.now() - burstStart) / 1000;
+    if (elapsedSec > 2) {
+      const wpm = Math.round((burstKeys / 5) / (elapsedSec / 60));
+      const wpmSpan = document.getElementById(`burst-${sec}-${subId}`);
+      if (wpmSpan) wpmSpan.innerText = `WPM: ${wpm}`;
+      telemetry.total_wpm = wpm;
+      burstKeys = 0;
+      burstStart = Date.now();
+    }
+  });
+}
+
+function startTelemetryWatchers() {
+  pauseWatchInterval = setInterval(() => {
+    const idleMs = Date.now() - lastKeystrokeTime;
+    telemetry.current_pause_ms = idleMs;
+
+    if (idleMs > telemetry.max_pause_ms) {
+      telemetry.max_pause_ms = idleMs;
+    }
+
+    const idleSec = Math.floor(idleMs / 1000);
+    const pauseDisplay = document.getElementById("telemetryCurrentPause");
+    if (pauseDisplay) pauseDisplay.innerText = `${idleSec}s`;
+
+    if (idleSec >= 5 && !isPauseEpisodeActive) {
+      isPauseEpisodeActive = true;
+      pauseEpisodeStartTime = Date.now() - idleMs;
+      telemetry.total_pauses++;
+
+      if (activeEditorContext.sec && activeEditorContext.subId) {
+        if (!telemetry.sub_pauses) telemetry.sub_pauses = {};
+        const subKey = `${activeEditorContext.sec}_${activeEditorContext.subId}`;
+        telemetry.sub_pauses[subKey] = (telemetry.sub_pauses[subKey] || 0) + 1;
+        const pauseSpan = document.getElementById(`pauses-${activeEditorContext.sec}-${activeEditorContext.subId}`);
+        if (pauseSpan) pauseSpan.innerText = `Pauses: ${telemetry.sub_pauses[subKey]}`;
+      }
+      logTraceEvent("pause_started", `${activeEditorContext.sec}_${activeEditorContext.subId}`, { threshold_sec: 5 });
+    }
+
+    const activeSec = currentSection || "intro";
+    const subs = sectionSubs[activeSec] || [];
+    subs.forEach(sub => {
+      const isCurrentActive = (activeSec === activeEditorContext.sec && sub.id === activeEditorContext.subId);
+      const timerEl = document.getElementById(`spotter-timer-${activeSec}-${sub.id}`);
+      const pillEl = document.getElementById(`spotter-pill-${activeSec}-${sub.id}`);
+      const spotterBox = document.getElementById(`spotter-${activeSec}-${sub.id}`);
+
+      if (isCurrentActive) {
+        if (spotterBox) spotterBox.classList.add("spotter-active");
+        if (timerEl) {
+          timerEl.innerText = `⏱️ Active Pause: ${idleSec}s`;
+          timerEl.style.color = idleSec < 5 ? "#2e7d32" : idleSec < 15 ? "#f57f17" : idleSec < 45 ? "#e65100" : "#b71c1c";
+        }
+        if (pillEl) {
+          pillEl.className = `spotter-status-pill ${idleSec < 5 ? "status-flow" : idleSec < 15 ? "status-reflection" : idleSec < 45 ? "status-hesitation" : "status-struggle"}`;
+          pillEl.innerText = idleSec < 5 ? "🟢 Flow State" : idleSec < 15 ? `🟡 Reflecting (${idleSec}s)` : idleSec < 45 ? `🟠 Hesitating (${idleSec}s)` : idleSec < 90 ? `🔴 Struggling (${idleSec}s)` : `🚨 Stagnation (${idleSec}s)`;
+        }
+      } else {
+        if (spotterBox) spotterBox.classList.remove("spotter-active");
+        if (timerEl) { timerEl.innerText = "⏱️ Standby"; timerEl.style.color = "#777"; }
+        if (pillEl) { pillEl.className = "spotter-status-pill status-standby"; pillEl.innerText = "⚪ Standby"; }
+      }
+    });
+
+    if (idleSec < 5) {
+      setLearnerState("flow", "Active formulation & typing");
+    } else if (idleSec >= 5 && idleSec < 15) {
+      setLearnerState("reflection", `Reflective planning (${idleSec}s)`);
+    } else if (idleSec >= 15 && idleSec < 45) {
+      setLearnerState("hesitation", `Cognitive hesitation (${idleSec}s)`);
+    } else if (idleSec >= 45 && idleSec < 90) {
+      setLearnerState("struggle", `Productive struggle (${idleSec}s) - AI Nudge Ready`);
+    } else if (idleSec >= 90) {
+      setLearnerState("struggle", `🚨 Stagnation (${idleSec}s) - Teacher Alert Triggered`);
+      // FIX 3: Trigger teacher alert once per stagnation episode
+      if (!hasTriggeredStagnationAlert) {
+        triggerTeacherAlertAuto();
+        hasTriggeredStagnationAlert = true;
+      }
+    }
+
+    updateTelemetryUI();
+  }, 1000);
+}
+
+function setLearnerState(state, desc) {
+  telemetry.active_state = state;
+  const descEl = document.getElementById("telemetryStateDesc");
+  if (descEl) descEl.innerText = desc;
+
+  const badge = document.getElementById("sidebarSrlBadge");
+  if (badge) {
+    badge.className = `srl-state-badge status-${state}`;
+    badge.innerText = state.toUpperCase();
+  }
+}
+
+function updateStatePill(sec, subId, state, text) {
+  const pill = document.getElementById(`spotter-pill-${sec}-${subId}`);
+  if (pill) {
+    pill.className = `spotter-status-pill status-${state}`;
+    pill.innerText = text;
+  }
+}
+
+function triggerTeacherAlertAuto() {
+  if (isEnhancedTeacher()) {
+    telemetry.teacher_alerts++;
+    logTraceEvent("teacher_alert_auto", currentSection, { reason: "idle_over_90s", condition: telemetry.current_condition });
+  }
+}
+
+function triggerStudentHelpRequest() {
+  telemetry.total_clicks++;
+  if (isEnhancedTeacher()) {
+    telemetry.teacher_alerts++;
+    logTraceEvent("student_help_request", currentSection, { condition: telemetry.current_condition, enhanced_teacher: true });
+    alert("🙋 Your request for teacher assistance has been flagged on the Teacher Orchestration Dashboard.");
+  } else {
+    logTraceEvent("student_help_request", currentSection, { condition: telemetry.current_condition, enhanced_teacher: false });
+    alert("🙋 Recorded. Under Condition " + telemetry.current_condition + " (Standard Teacher) automated alerts are suppressed; logged to trace.");
+  }
+  updateTelemetryUI();
+}
+
+function updateTelemetryUI() {
+  const elClicks = document.getElementById("telemetryClicks");
+  if (elClicks) elClicks.innerText = telemetry.total_clicks;
+
+  const elPauses = document.getElementById("telemetryPauses");
+  if (elPauses) elPauses.innerText = telemetry.total_pauses;
+
+  const elRevs = document.getElementById("telemetryRevisions");
+  if (elRevs) elRevs.innerText = telemetry.total_revisions;
+
+  const elMax = document.getElementById("telemetryMaxPause");
+  if (elMax) elMax.innerText = `${Math.round(telemetry.max_pause_ms / 1000)}s`;
+
+  updateWordCounts();
+}
+
+function attachAntiPaste(el) {
+  if (!el) return;
+  el.addEventListener("paste", blockPaste);
+  el.addEventListener("drop", blockPaste);
+  el.addEventListener("keydown", function(e) {
+    if ((e.ctrlKey || e.metaKey) && (e.key === "v" || e.key === "V")) {
+      e.preventDefault(); e.stopPropagation(); handleBlocked(e.target);
+    } else if (e.shiftKey && e.key === "Insert") {
+      e.preventDefault(); e.stopPropagation(); handleBlocked(e.target);
+    }
+  });
+}
+
+function blockPaste(e) {
+  e.preventDefault(); e.stopPropagation();
+  handleBlocked(e.target);
+}
+
+function handleBlocked(el) {
+  telemetry.blocked_pastes++;
+  logTraceEvent("paste_blocked", el.id || "textarea");
+
+  if (el.classList) {
+    el.classList.add("paste-blocked");
+    setTimeout(() => el.classList.remove("paste-blocked"), 1000);
+  }
+
+  const toast = document.getElementById("antiPasteToast");
+  if (toast) {
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 4000);
+  }
+
+  const display = document.getElementById("blockedPasteDisplay");
+  if (display) display.innerText = telemetry.blocked_pastes;
+
+  setLearnerState("offloading", "⚠️ External Paste Intercepted");
+}
+
+function handleSubInput(sec, subId) {
+  const textEl = document.getElementById(`text-${sec}-${subId}`);
+  const text = (textEl?.value || "").trim();
+  const wc = text ? text.split(/\s+/).filter(Boolean).length : 0;
+
+  const wcEl = document.getElementById(`wc-${sec}-${subId}`);
+  const subObj = sectionSubs[sec]?.find(s => s.id === subId);
+  if (wcEl) wcEl.innerText = `Words: ${wc} | Target: ${subObj?.target || "N/A"}`;
+
+  updateWordCounts();
+  saveStateToLocalStorage();
+}
+
+function updateWordCounts() {
+  let totalWc = 0;
+  const sections = ["intro", "methods", "results", "discussion", "references"];
+
+  sections.forEach(sec => {
+    let secWc = 0;
+    const subs = sectionSubs[sec] || [];
+    subs.forEach(s => {
+      const el = document.getElementById(`text-${sec}-${s.id}`);
+      if (el) {
+        const words = el.value.trim().split(/\s+/).filter(Boolean).length;
+        secWc += words;
+      }
+    });
+    totalWc += secWc;
+    const secWcDisplay = document.getElementById(`wc-${sec}`);
+    if (secWcDisplay) secWcDisplay.innerText = secWc;
+  });
+
+  const totalDisplay = document.getElementById("totalWordCountDisplay");
+  if (totalDisplay) totalDisplay.innerText = `${totalWc} words`;
+}
+
+function switchSection(sec) {
+  if (!unlockedSections.has(sec)) {
+    alert("🔒 This section is locked! Please complete preceding stages in order.");
+    return;
+  }
+
+  currentSection = sec;
+  telemetry.total_clicks++;
+  logTraceEvent("section_switch", sec);
+
+  if (sectionSubs[sec] && sectionSubs[sec].length > 0) {
+    activeEditorContext = { sec: sec, subId: sectionSubs[sec][0].id };
+    lastKeystrokeTime = Date.now();
+    telemetry.current_pause_ms = 0;
+  }
+
+  document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+  const targetTab = document.getElementById(`tab-${sec}`);
+  if (targetTab) targetTab.classList.add("active");
+
+  document.querySelectorAll(".imrad-section").forEach(s => s.classList.remove("active"));
+  const targetSec = document.getElementById(`sec-${sec}`);
+  if (targetSec) targetSec.classList.add("active");
+
+  refreshSubsectionSpotterStates();
+  startSectionTimer(sec);
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function completeAndUnlockSection(currentSec, nextSec) {
+  telemetry.total_clicks++;
+  completedSections.add(currentSec);
+  unlockedSections.add(nextSec);
+
+  const currentTab = document.getElementById(`tab-${currentSec}`);
+  if (currentTab) currentTab.classList.add("completed");
+
+  const nextTab = document.getElementById(`tab-${nextSec}`);
+  if (nextTab) nextTab.classList.remove("locked");
+
+  logTraceEvent("section_completed", currentSec);
+  saveStateToLocalStorage();
+  switchSection(nextSec);
+}
+
+function startSectionTimer(sec) {
+  if (activeTimerInterval) clearInterval(activeTimerInterval);
+  if (sec === "setup") {
+    document.getElementById("sectionTimerDisplay").innerText = "⏱️ Setup";
+    return;
+  }
+
+  activeTimerInterval = setInterval(() => {
+    if (sectionTimers[sec] > 0) {
+      sectionTimers[sec]--;
+      updateTimerDisplay(sectionTimers[sec]);
+    } else {
+      clearInterval(activeTimerInterval);
+      handleTimeExpired(sec);
+    }
+  }, 1000);
+}
+
+function updateTimerDisplay(seconds) {
+  const m = Math.floor(seconds / 60);
+  const s = seconds % 60;
+  const timerBadge = document.getElementById("sectionTimerDisplay");
+  if (!timerBadge) return;
+
+  timerBadge.innerText = `⏱️ ${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+
+  if (seconds < 300) {
+    timerBadge.className = "timer-badge danger";
+  } else if (seconds < 600) {
+    timerBadge.className = "timer-badge warning";
+  } else {
+    timerBadge.className = "timer-badge";
+  }
+}
+
+function handleTimeExpired(sec) {
+  logTraceEvent("time_expired", sec);
+  alert(`⏱️ 40-Minute time allocation reached for Stage: ${sec.toUpperCase()}. Review your draft and proceed.`);
+}
+
+let activeAddSec = "intro";
+function openAddSubModal(sec) {
+  activeAddSec = sec;
+  telemetry.total_clicks++;
+  document.getElementById("addSubModal").classList.add("show");
+}
+function closeAddSubModal() {
+  document.getElementById("addSubModal").classList.remove("show");
+}
+
+function confirmAddSub() {
+  const title = document.getElementById("newSubTitle").value.trim();
+  const target = document.getElementById("newSubTarget").value.trim() || "100–150 words";
+  const prompt = document.getElementById("newSubPrompt").value.trim();
+
+  if (!title) {
+    alert("Please enter a subsection title.");
+    return;
+  }
+
+  const existing = sectionSubs[activeAddSec] || [];
+  const newId = existing.length ? Math.max(...existing.map(s => s.id)) + 1 : 1;
+
+  existing.push({
+    id: newId,
+    title: title,
+    placeholder: prompt || "Enter scientific prose here...",
+    target: target,
+    assets: []
+  });
+
+  closeAddSubModal();
+  renderSectionSubs(activeAddSec);
+  saveStateToLocalStorage();
+  logTraceEvent("custom_sub_added", activeAddSec, { title: title, newId: newId });
+}
+
+function renameSub(sec, subId) {
+  telemetry.total_clicks++;
+  const sub = sectionSubs[sec]?.find(s => s.id === subId);
+  if (!sub) return;
+
+  const newTitle = prompt("Enter new subsection title:", sub.title);
+  if (newTitle && newTitle.trim()) {
+    sub.title = newTitle.trim();
+    renderSectionSubs(sec);
+    saveStateToLocalStorage();
+    logTraceEvent("sub_renamed", `${sec}_${subId}`, { newTitle: sub.title });
+  }
+}
+
+function deleteSub(sec, subId) {
+  telemetry.total_clicks++;
+  if (!confirm("Are you sure you want to delete this subsection?")) return;
+
+  sectionSubs[sec] = (sectionSubs[sec] || []).filter(s => s.id !== subId);
+  renderSectionSubs(sec);
+  saveStateToLocalStorage();
+  logTraceEvent("sub_deleted", `${sec}_${subId}`);
+}
+
+function openTableModalFor(sec, subId) {
+  activeTargetSubForAsset = { sec, subId };
+  telemetry.total_clicks++;
+  document.getElementById("tableModal").classList.add("show");
+}
+function closeTableModal() { document.getElementById("tableModal").classList.remove("show"); }
+
+function confirmInsertTable() {
+  const caption = document.getElementById("tblCaption").value.trim() || "Table: Scientific Data";
+  const headers = document.getElementById("tblHeaders").value.split(",").map(h => h.trim());
+  const rowsRaw = document.getElementById("tblRows").value.trim().split("\n");
+  const rows = rowsRaw.map(r => r.split(",").map(c => c.trim()));
+
+  const sub = sectionSubs[activeTargetSubForAsset.sec]?.find(s => s.id === activeTargetSubForAsset.subId);
+  if (sub) {
+    sub.assets.push({
+      type: "table",
+      caption: caption,
+      headers: headers,
+      rows: rows
+    });
+    renderSubAssets(activeTargetSubForAsset.sec, activeTargetSubForAsset.subId);
+    saveStateToLocalStorage();
+  }
+  closeTableModal();
+}
+
+function openChartModalFor(sec, subId) {
+  activeTargetSubForAsset = { sec, subId };
+  telemetry.total_clicks++;
+  document.getElementById("chartModal").classList.add("show");
+}
+function closeChartModal() { document.getElementById("chartModal").classList.remove("show"); }
+
+function confirmInsertChart() {
+  const caption = document.getElementById("chartCaption").value.trim() || "Figure: Empirical Trends";
+  const xLabels = document.getElementById("chartXLabels").value.split(",").map(x => x.trim());
+  const yValues = document.getElementById("chartYValues").value.split(",").map(y => parseFloat(y.trim()) || 0);
+
+  const sub = sectionSubs[activeTargetSubForAsset.sec]?.find(s => s.id === activeTargetSubForAsset.subId);
+  if (sub) {
+    sub.assets.push({
+      type: "chart",
+      caption: caption,
+      xLabels: xLabels,
+      yValues: yValues
+    });
+    renderSubAssets(activeTargetSubForAsset.sec, activeTargetSubForAsset.subId);
+    saveStateToLocalStorage();
+  }
+  closeChartModal();
+}
+
+function openImageModalFor(sec, subId) {
+  activeTargetSubForAsset = { sec, subId };
+  telemetry.total_clicks++;
+  document.getElementById("imageModal").classList.add("show");
+}
+function closeImageModal() { document.getElementById("imageModal").classList.remove("show"); }
+
+function confirmInsertImage() {
+  const caption = document.getElementById("imageCaption").value.trim() || "Figure: Experimental Photograph";
+  const fileInput = document.getElementById("imageFileInput");
+
+  if (fileInput.files && fileInput.files[0]) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const sub = sectionSubs[activeTargetSubForAsset.sec]?.find(s => s.id === activeTargetSubForAsset.subId);
+      if (sub) {
+        sub.assets.push({
+          type: "image",
+          caption: caption,
+          dataUrl: e.target.result
+        });
+        renderSubAssets(activeTargetSubForAsset.sec, activeTargetSubForAsset.subId);
+        saveStateToLocalStorage();
+      }
+    };
+    reader.readAsDataURL(fileInput.files[0]);
+  }
+  closeImageModal();
+}
+
+function renderSubAssets(sec, subId) {
+  const container = document.getElementById(`assets-${sec}-${subId}`);
+  if (!container) return;
+  container.innerHTML = "";
+
+  const sub = sectionSubs[sec]?.find(s => s.id === subId);
+  if (!sub || !sub.assets) return;
+
+  sub.assets.forEach((asset, idx) => {
+    const card = document.createElement("div");
+    card.className = "asset-card";
+
+    if (asset.type === "table") {
+      let thHtml = asset.headers.map(h => `<th>${sanitizeScientificTypography(h)}</th>`).join("");
+      let trHtml = asset.rows.map(row => `<tr>${row.map(c => `<td>${sanitizeScientificTypography(c)}</td>`).join("")}</tr>`).join("");
+      card.innerHTML = `
+        <div class="asset-card-header">
+          <span>📊 ${sanitizeScientificTypography(asset.caption)}</span>
+          <button class="sub-icon-btn" onclick="removeAsset('${sec}', ${subId}, ${idx})">🗑️ Remove</button>
+        </div>
+        <div class="springer-table-container">
+          <table class="springer-table">
+            <thead><tr>${thHtml}</tr></thead>
+            <tbody>${trHtml}</tbody>
+          </table>
+        </div>
+      `;
+    } else if (asset.type === "chart") {
+      const maxVal = Math.max(...asset.yValues, 1);
+      let bars = asset.yValues.map((val, i) => {
+        const heightPct = Math.round((val / maxVal) * 120);
+        return `
+          <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+            <span style="font-size:11px;font-weight:bold;">${val}</span>
+            <div style="width:38px;height:${heightPct}px;background:#00897b;border-radius:2px;"></div>
+            <span style="font-size:10px;text-align:center;max-width:55px;">${asset.xLabels[i] || ""}</span>
+          </div>
+        `;
+      }).join("");
+
+      card.innerHTML = `
+        <div class="asset-card-header">
+          <span>📈 ${sanitizeScientificTypography(asset.caption)}</span>
+          <button class="sub-icon-btn" onclick="removeAsset('${sec}', ${subId}, ${idx})">🗑️ Remove</button>
+        </div>
+        <div style="display:flex;justify-content:space-around;align-items:flex-end;height:170px;padding:10px;background:#fbf9f5;border:1px solid #e0d8cb;border-radius:4px;">
+          ${bars}
+        </div>
+      `;
+    } else if (asset.type === "image") {
+      card.innerHTML = `
+        <div class="asset-card-header">
+          <span>🖼️ ${sanitizeScientificTypography(asset.caption)}</span>
+          <button class="sub-icon-btn" onclick="removeAsset('${sec}', ${subId}, ${idx})">🗑️ Remove</button>
+        </div>
+        <div style="text-align:center;padding:8px;">
+          <img src="${asset.dataUrl}" style="max-width:100%;max-height:240px;border-radius:4px;border:1px solid #ccc;">
+        </div>
+      `;
+    }
+
+    container.appendChild(card);
+  });
+}
+
+function removeAsset(sec, subId, idx) {
+  const sub = sectionSubs[sec]?.find(s => s.id === subId);
+  if (sub && sub.assets) {
+    sub.assets.splice(idx, 1);
+    renderSubAssets(sec, subId);
+    saveStateToLocalStorage();
+  }
+}
+
+function openTeacherDashboard() {
+  telemetry.total_clicks++;
+  if (!isEnhancedTeacher()) {
+    alert("🔒 The Teacher Orchestration Dashboard is enabled only for Enhanced Teacher conditions (C2 / C4).");
+    return;
+  }
+  const meta = CONDITION_META[telemetry.current_condition] || CONDITION_META.C4;
+  const condLbl = document.getElementById("tdConditionLabel");
+  if (condLbl) condLbl.innerText = telemetry.current_condition + " — " + meta.label.replace(/^Cond\. \d: /, "");
+
+  const struggleScore = Math.min(100, (telemetry.total_pauses * 5) + (telemetry.blocked_pastes * 15));
+  const struggleLabel = struggleScore > 60 ? "High" : struggleScore > 30 ? "Moderate" : "Low";
+  document.getElementById("tdStruggleScore").innerText = `${struggleLabel} (${struggleScore}%)`;
+
+  document.getElementById("tdStudentStatus").innerText = telemetry.active_state.toUpperCase();
+  document.getElementById("tdTotalPauses").innerText = telemetry.total_pauses;
+  document.getElementById("tdAlertCount").innerText = telemetry.teacher_alerts;
+  document.getElementById("teacherDashboardModal").classList.add("show");
+  logTraceEvent("teacher_dashboard_opened");
+}
+
+function closeTeacherDashboard() {
+  document.getElementById("teacherDashboardModal").classList.remove("show");
+}
+
+function logTeacherAction(actionType) {
+  telemetry.total_clicks++;
+  const timestamp = new Date().toLocaleTimeString();
+  const entry = { action: actionType, time: timestamp };
+  telemetry.teacher_action_log.push(entry);
+
+  if (actionType === "T_EXTEND_TIME") {
+    if (sectionTimers[currentSection]) sectionTimers[currentSection] += 600;
+    alert("⏱️ 10 Minutes added to current section budget.");
+  }
+
+  const logBox = document.getElementById("teacherActionLogHistory");
+  if (logBox) {
+    logBox.innerHTML = telemetry.teacher_action_log.map(a => `<div>[${a.time}] <strong>${a.action}</strong> recorded</div>`).join("");
+  }
+
+  logTraceEvent("teacher_action_logged", currentSection, { action: actionType });
+  saveStateToLocalStorage();
+}
+
+function openConditionModal() {
+  telemetry.total_clicks++;
+  document.getElementById("conditionModal").classList.add("show");
+}
+function closeConditionModal() {
+  document.getElementById("conditionModal").classList.remove("show");
+}
+
+function setExperimentCondition(cond) {
+  telemetry.current_condition = cond;
+  applyConditionToUI();
+  logTraceEvent("condition_set", cond);
+  saveStateToLocalStorage();
+}
+
+const CONDITION_META = {
+  C1: { label: "Restricted AI + Standard Teacher", ai: "restricted", teacher: "standard" },
+  C2: { label: "Restricted AI + Enhanced Teacher", ai: "restricted", teacher: "enhanced" },
+  C3: { label: "Adaptive AI + Standard Teacher",   ai: "adaptive",   teacher: "standard" },
+  C4: { label: "Adaptive AI + Enhanced Teacher (Full Protocol)", ai: "adaptive", teacher: "enhanced" }
+};
+
+function isEnhancedTeacher() { return ["C2", "C4"].includes(telemetry.current_condition); }
+function isRestrictedAI()   { return ["C1", "C2"].includes(telemetry.current_condition); }
+
+function applyConditionToUI() {
+  const cond = telemetry.current_condition;
+  const meta = CONDITION_META[cond] || CONDITION_META.C4;
+
+  const badge = document.getElementById("activeConditionBadge");
+  if (badge) badge.innerText = "🔬 Cond. " + cond.slice(1) + ": " + meta.label;
+
+  // FIX 4: Synchronize checked state of radio buttons
+  const radio = document.querySelector(`input[name="expCond"][value="${cond}"]`);
+  if (radio) radio.checked = true;
+
+  const restricted = isRestrictedAI();
+  document.querySelectorAll(".spotter-btn-l2, .spotter-btn-l3, .spotter-btn-l4, .spotter-btn-shape").forEach(btn => {
+    btn.classList.toggle("gated", restricted);
+  });
+
+  const enhanced = isEnhancedTeacher();
+  const btnPanel = document.getElementById("btnTeacherPanel");
+  const btnHelp = document.getElementById("btnHelpTeacher");
+  if (btnPanel) btnPanel.style.display = enhanced ? "" : "none";
+  if (btnHelp) btnHelp.style.display = enhanced ? "" : "none";
+}
+
+function saveStateToLocalStorage() {
+  try {
+    const dataToSave = {
+      timestamp: Date.now(),
+      students: [
+        document.getElementById("metaStudent1")?.value || "",
+        document.getElementById("metaStudent2")?.value || "",
+        document.getElementById("metaStudent3")?.value || "",
+        document.getElementById("metaStudent4")?.value || "",
+        document.getElementById("metaStudent5")?.value || ""
+      ],
+      advisors: [
+        document.getElementById("metaAdvisor1")?.value || "",
+        document.getElementById("metaAdvisor2")?.value || ""
+      ],
+      baseline: {
+        prior: document.getElementById("baselinePriorKnowledge")?.value || "3",
+        efficacy: document.getElementById("baselineSelfEfficacy")?.value || "80"
+      },
+      sectionSubs: sectionSubs,
+      unlockedSections: Array.from(unlockedSections),
+      completedSections: Array.from(completedSections),
+      sectionTimers: sectionTimers,
+      telemetry: telemetry
+    };
+
+    const texts = {};
+    const sections = ["intro", "methods", "results", "discussion", "references"];
+    sections.forEach(sec => {
+      (sectionSubs[sec] || []).forEach(sub => {
+        const val = document.getElementById(`text-${sec}-${sub.id}`)?.value || "";
+        texts[`${sec}_${sub.id}`] = val;
+      });
+    });
+    dataToSave.texts = texts;
+
+    localStorage.setItem("nelly_g3_imrad_proposal_state", JSON.stringify(dataToSave));
+    const autoPill = document.getElementById("autosaveStatus");
+    if (autoPill) {
+      const d = new Date();
+      autoPill.innerText = `💾 Saved ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}:${String(d.getSeconds()).padStart(2,'0')}`;
+    }
+  } catch (err) {
+    console.warn("Auto-save notice:", err);
+  }
+}
+
+function restoreStateFromLocalStorage() {
+  try {
+    const raw = localStorage.getItem("nelly_g3_imrad_proposal_state");
+    if (!raw) return;
+    const data = JSON.parse(raw);
+
+    if (data.students) {
+      for (let i = 1; i <= 5; i++) {
+        const el = document.getElementById(`metaStudent${i}`);
+        if (el && data.students[i-1]) el.value = data.students[i-1];
+      }
+    }
+    if (data.advisors) {
+      const a1 = document.getElementById("metaAdvisor1");
+      const a2 = document.getElementById("metaAdvisor2");
+      if (a1 && data.advisors[0]) a1.value = data.advisors[0];
+      if (a2 && data.advisors[1]) a2.value = data.advisors[1];
+    }
+    if (data.sectionSubs) {
+      sectionSubs = data.sectionSubs;
+      renderAllSubsections();
+    }
+    if (data.texts) {
+      Object.keys(data.texts).forEach(key => {
+        const [sec, subId] = key.split("_");
+        const el = document.getElementById(`text-${sec}-${subId}`);
+        if (el) el.value = data.texts[key];
+      });
+    }
+    if (data.unlockedSections) {
+      unlockedSections = new Set(data.unlockedSections);
+      unlockedSections.forEach(sec => {
+        const tab = document.getElementById(`tab-${sec}`);
+        if (tab) tab.classList.remove("locked");
+      });
+    }
+    if (data.completedSections) {
+      completedSections = new Set(data.completedSections);
+      completedSections.forEach(sec => {
+        const tab = document.getElementById(`tab-${sec}`);
+        if (tab) tab.classList.add("completed");
+      });
+    }
+    if (data.sectionTimers) {
+      sectionTimers = data.sectionTimers;
+    }
+    if (data.telemetry) {
+      if (data.telemetry.current_condition) telemetry.current_condition = data.telemetry.current_condition;
+      if (data.telemetry.active_state) telemetry.active_state = data.telemetry.active_state;
+      telemetry.total_clicks = data.telemetry.total_clicks || 0;
+      telemetry.total_pauses = data.telemetry.total_pauses || 0;
+      telemetry.total_keystrokes = data.telemetry.total_keystrokes || 0;
+      telemetry.total_backspaces = data.telemetry.total_backspaces || 0;
+      telemetry.total_revisions = data.telemetry.total_revisions || 0;
+      telemetry.max_pause_ms = data.telemetry.max_pause_ms || 0;
+      telemetry.blocked_pastes = data.telemetry.blocked_pastes || 0;
+      telemetry.teacher_alerts = data.telemetry.teacher_alerts || 0;
+      telemetry.teacher_action_log = data.telemetry.teacher_action_log || [];
+      telemetry.sub_pauses = data.telemetry.sub_pauses || {};
+      telemetry.trace_log = data.telemetry.trace_log || [];
+    }
+
+    updateTelemetryUI();
+    updateWordCounts();
+  } catch (err) {
+    console.error("Error restoring session state:", err);
+  }
+}
+
+function sanitizeScientificTypography(str) {
+  if (!str) return "";
+  return str
+    .replace(/\\(?:textbf|mathbf)\{([^}]+)\}/g, "<strong>$1</strong>")
+    .replace(/\\(?:textit|mathit)\{([^}]+)\}/g, "<em>$1</em>")
+    .replace(/\$H_1\$/g, "<i>H</i><sub>1</sub>")
+    .replace(/\$H_2\$/g, "<i>H</i><sub>2</sub>")
+    .replace(/H₁/g, "<i>H</i><sub>1</sub>")
+    .replace(/H₂/g, "<i>H</i><sub>2</sub>")
+    .replace(/CH4/g, "CH₄")
+    .replace(/RQ([1-5])/g, "RQ$1")
+    .replace(/\$p\s*<\s*0\.05\$/gi, "<i>p</i> &lt; 0.05")
+    .replace(/\bp\s*<\s*0\.05/gi, "<i>p</i> &lt; 0.05"); // FIX 5: Word-boundary anchor
+}
+
+function compileAndPrintPdf() {
+  telemetry.total_clicks++;
+  logTraceEvent("export_pdf_proposal");
+
+  const teamRoles = [
+    "Principal Investigator & Bio-Sponge Lead (Pathway A)",
+    "Paper/Foam Pathway Lead (Pathway B)",
+    "Compost & Plant-Trial Lead (Pathway C)",
+    "Biogas Model & Data Analyst (Pathway D)",
+    "Sensory Pilot & QA Manager (Pathway E)"
+  ];
+  const studentStr = [1,2,3,4,5].map(i => {
+    const name = (document.getElementById(`metaStudent${i}`)?.value || "").trim() || ("Student " + i);
+    return `${name} (${teamRoles[i-1]})`;
+  }).join(", ");
+  const advisor1 = (document.getElementById("metaAdvisor1")?.value || "").trim() || "[Lead Faculty STEM Advisor]";
+  const advisor2 = (document.getElementById("metaAdvisor2")?.value || "").trim() || "[Science Co-Advisor / Lab Instructor]";
+
+  let bodyHtml = `
+    <div class="springer-print-header">
+      <div style="font-size:9pt;font-weight:bold;letter-spacing:1px;text-transform:uppercase;color:#004d80;margin-bottom:4pt;">SPRINGER / APA 7 • IMRAD SCIENTIFIC RESEARCH PROPOSAL — DUAL-WASTE VALORIZATION</div>
+      <div class="springer-print-title">${document.getElementById("displayProjectTitle").innerHTML}</div>
+      <div class="springer-print-authors">${studentStr}</div>
+      <div class="springer-print-affil">
+        Secondary Multilingual Bilingual Program (SMBP 2.4 Classroom), Chalermkwansatree School, Phitsanulok 65000, Thailand — Grade 8 / Group Nelly (G3)<br>
+        Faculty Advisors: ${advisor1} &amp; ${advisor2}
+      </div>
+    </div>
+  `;
+
+  const sections = [
+    { key: "intro", title: "1.0 INTRODUCTION, DUAL-WASTE PROBLEM & RESEARCH QUESTIONS" },
+    { key: "methods", title: "2.0 MATERIALS, 5-PATHWAY PROTOCOL & DATA GOVERNANCE" },
+    { key: "results", title: "3.0 PATHWAY RESULTS & EVIDENCE SYNTHESIS" },
+    { key: "discussion", title: "4.0 DISCUSSION, MECHANISMS & CIRCULAR ECONOMY" },
+    { key: "references", title: "5.0 CONCLUSIONS & REFERENCES" }
+  ];
+
+  sections.forEach(sec => {
+    bodyHtml += `<div class="springer-print-h2">${sec.title}</div>`;
+    const subs = sectionSubs[sec.key] || [];
+
+    subs.forEach(sub => {
+      const textVal = document.getElementById(`text-${sec.key}-${sub.id}`)?.value.trim() || "[Section narrative not completed]";
+      bodyHtml += `
+        <div class="springer-print-h3">${sanitizeScientificTypography(sub.title)}</div>
+        <div class="springer-print-p">${sanitizeScientificTypography(textVal).replace(/\n\n/g, '</div><div class="springer-print-p">')}</div>
+      `;
+
+      (sub.assets || []).forEach(asset => {
+        if (asset.type === "table") {
+          let ths = asset.headers.map(h => `<th>${sanitizeScientificTypography(h)}</th>`).join("");
+          let trs = asset.rows.map(r => `<tr>${r.map(c => `<td>${sanitizeScientificTypography(c)}</td>`).join("")}</tr>`).join("");
+          bodyHtml += `
+            <div style="margin:8pt 0;">
+              <div class="springer-print-caption">${sanitizeScientificTypography(asset.caption)}</div>
+              <table class="springer-print-table"><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table>
+            </div>
+          `;
+        } else if (asset.type === "chart") {
+          // FIX 2: Export SVG Charts into the Print/PDF layout
+          const maxVal = Math.max(...asset.yValues, 1);
+          let printBars = asset.yValues.map((val, i) => {
+            const hPct = Math.round((val / maxVal) * 80);
+            return `
+              <div style="display:inline-block;text-align:center;margin:0 12pt;vertical-align:bottom;">
+                <div style="font-size:8pt;font-weight:bold;margin-bottom:2pt;">${val}</div>
+                <div style="width:28pt;height:${hPct}pt;background:#00897b;margin:0 auto;border:0.5pt solid #004d40;"></div>
+                <div style="font-size:7.5pt;margin-top:3pt;max-width:45pt;">${asset.xLabels[i] || ""}</div>
+              </div>
+            `;
+          }).join("");
+          bodyHtml += `
+            <div style="margin:10pt 0;page-break-inside:avoid;text-align:center;">
+              <div class="springer-print-caption">${sanitizeScientificTypography(asset.caption)}</div>
+              <div style="border:0.75pt solid #999;padding:10pt 5pt 5pt;display:inline-block;background:#fafafa;">
+                ${printBars}
+              </div>
+            </div>
+          `;
+        } else if (asset.type === "image") {
+          bodyHtml += `
+            <div style="text-align:center;margin:8pt 0;page-break-inside:avoid;">
+              <img src="${asset.dataUrl}" style="max-width:85%;max-height:220pt;">
+              <div class="springer-print-caption">${sanitizeScientificTypography(asset.caption)}</div>
+            </div>
+          `;
+        }
+      });
+    });
+  });
+
+  const printDiv = document.getElementById("printManuscriptContainer");
+  printDiv.innerHTML = bodyHtml;
+  printDiv.classList.add("print-active");
+  document.getElementById("printReportContainer").classList.remove("print-active");
+
+  setTimeout(() => {
+    window.print();
+    setTimeout(() => printDiv.classList.remove("print-active"), 1000);
+  }, 300);
+}
+
+function generateDiagnosticReport() {
+  telemetry.total_clicks++;
+  logTraceEvent("export_diagnostic_report");
+
+  const totalWords = document.getElementById("totalWordCountDisplay")?.innerText || "0 words";
+  const prior = document.getElementById("baselinePriorKnowledge")?.value || "3";
+  const selfEff = document.getElementById("baselineSelfEfficacy")?.value || "80";
+  const postEffort = document.getElementById("postEffortRating")?.value || "Moderate";
+  const postScore = document.getElementById("postPerceivedScore")?.value || "85";
+
+  let reportHtml = `
+    <div class="springer-print-header">
+      <div style="font-size:9pt;font-weight:bold;letter-spacing:1px;text-transform:uppercase;color:#004d80;margin-bottom:4pt;">GROUP NELLY (G3) — DUAL-WASTE VALORIZATION CAPSTONE: SRL PROCESS & TRACE DIAGNOSTIC REPORT</div>
+      <div class="springer-print-title">Multimodal Self-Regulated Learning (SRL) & Process Analytics Compendium</div>
+      <div class="springer-print-authors">Participant / Group ID: ${telemetry.participant_id} | Class: ${telemetry.class_id}</div>
+      <div class="springer-print-affil">
+        Evaluation Framework: Zimmerman (2000) SRL Model + Sweller (2011) Cognitive Load Theory + Cognitive Spotter Analytics (Hasan & Dever, 2025)<br>
+        Target Task: Dual-Waste Valorization IMRAD Proposal | Condition: ${telemetry.current_condition} — ${(CONDITION_META[telemetry.current_condition] || CONDITION_META.C4).label} | Date: ${new Date().toLocaleDateString()}
+      </div>
+    </div>
+
+    <div class="springer-print-h2">1. EXECUTIVE PROCESS & TELEMETRY SUMMARY</div>
+    <table class="springer-print-table">
+      <thead>
+        <tr><th>Metric Identifier</th><th>Observed Value</th><th>Normative Benchmark / SRL Interpretation</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Total Proposal Word Count</td><td>${totalWords}</td><td>Standard Target: 800–1200 words</td></tr>
+        <tr><td>Clickstream Interactions</td><td>${telemetry.total_clicks} clicks</td><td>Active cognitive tool utilization</td></tr>
+        <tr><td>Cognitive Pauses (&gt;5s)</td><td>${telemetry.total_pauses} episodes</td><td>Reflective planning & empirical calibration</td></tr>
+        <tr><td>Maximum Pause Duration</td><td>${Math.round(telemetry.max_pause_ms / 1000)} seconds</td><td>Productive struggle vs. stagnation threshold (&lt;90s)</td></tr>
+        <tr><td>Total Keystrokes / Revisions</td><td>${telemetry.total_keystrokes} / ${telemetry.total_revisions}</td><td>Deep iterative refinement ratio</td></tr>
+        <tr><td>Blocked Offloading Attempts</td><td>${telemetry.blocked_pastes} events</td><td>100% Zero-Paste Integrity Maintained</td></tr>
+        <tr><td>Knowledge Bank Consultations</td><td>${telemetry.trace_log.filter(t => t.event_type === "knowledge_bank_opened").length} sessions</td><td>Framework-reference engagement</td></tr>
+        <tr><td>Teacher Interventions Logged</td><td>${telemetry.teacher_action_log.length} actions</td><td>Pedagogical scaffolding orchestration</td></tr>
+      </tbody>
+    </table>
+
+    <div class="springer-print-h2">2. METACOGNITIVE CALIBRATION (ZIMMERMAN CYCLICAL PHASES)</div>
+    <div class="springer-print-p">
+      <strong>Forethought Phase:</strong> Baseline Prior Knowledge Score: ${prior}/4 | Baseline Self-Efficacy: ${selfEff}%.<br>
+      <strong>Performance Phase:</strong> Scaffolding gradient transitions successfully navigated without unmonitored cognitive offloading.<br>
+      <strong>Self-Reflection Phase:</strong> Post-Task Perceived Rigor: ${postScore}% | Exerted Metacognitive Effort: ${postEffort}.<br>
+      <strong>Calibration Bias Metric:</strong> Bias Index = ${(parseFloat(postScore) - 82).toFixed(1)} (Calibrated against normative M = 82.0 rubric benchmark).
+    </div>
+
+    <div class="springer-print-h2">3. IMMUTABLE RESEARCH TRACE AUDIT TRAIL (SAMPLE EXCERPT)</div>
+    <table class="springer-print-table" style="font-size:7.5pt;">
+      <thead>
+        <tr><th>Timestamp (UTC)</th><th>Section</th><th>Event Type</th><th>Latency (ms)</th><th>Inferred State</th></tr>
+      </thead>
+      <tbody>
+        ${telemetry.trace_log.slice(-10).map(t => `
+          <tr>
+            <td>${t.timestamp_utc}</td>
+            <td>${t.section_id}</td>
+            <td>${t.event_type}</td>
+            <td>${t.latency_ms}</td>
+            <td>${t.state_inferred}</td>
+          </tr>
+        `).join("")}
+      </tbody>
+    </table>
+  `;
+
+  const reportDiv = document.getElementById("printReportContainer");
+  reportDiv.innerHTML = reportHtml;
+  reportDiv.classList.add("print-active");
+  document.getElementById("printManuscriptContainer").classList.remove("print-active");
+
+  setTimeout(() => {
+    window.print();
+    setTimeout(() => reportDiv.classList.remove("print-active"), 1000);
+  }, 300);
+}
+
+function exportTraceDataset() {
+  telemetry.total_clicks++;
+  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(telemetry, null, 2));
+  const downloadAnchor = document.createElement("a");
+  downloadAnchor.setAttribute("href", dataStr);
+  downloadAnchor.setAttribute("download", `ResearchTrace_NellyG3_${telemetry.participant_id}_${Date.now()}.json`);
+  document.body.appendChild(downloadAnchor);
+  downloadAnchor.click();
+  downloadAnchor.remove();
+  logTraceEvent("export_trace_dataset");
+}
+
+function csvCell(v) {
+  if (v === null || v === undefined) return "";
+  const s = String(v);
+  return /[",\n\r]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+}
+
+function exportTraceCSV() {
+  telemetry.total_clicks++;
+  const cols = ["participant_id","class_id","session_id","timestamp_utc","section_id","event_type","event_target","latency_ms","scaffold_level_active","state_inferred","accept_reject_revision","condition"];
+  const lines = [cols.join(",")];
+  telemetry.trace_log.forEach(t => {
+    lines.push([
+      t.participant_id, t.class_id, t.session_id, t.timestamp_utc, t.section_id,
+      t.event_type, t.event_target, t.latency_ms, t.scaffold_level_active,
+      t.state_inferred, t.accept_reject_revision, t.condition || telemetry.current_condition
+    ].map(csvCell).join(","));
+  });
+  const blob = new Blob(["\uFEFF" + lines.join("\r\n")], { type: "text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.setAttribute("download", `ResearchTrace_NellyG3_${telemetry.participant_id}_${Date.now()}.csv`);
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
+  logTraceEvent("export_trace_csv");
+}
+
+function openKnowledgeBank() {
+  telemetry.total_clicks++;
+  document.getElementById("knowledgeBankModal").classList.add("show");
+  logTraceEvent("knowledge_bank_opened", "framework_bank");
+}
+
+function closeKnowledgeBank() {
+  document.getElementById("knowledgeBankModal").classList.remove("show");
+}
+
+function attachGlobalAntiPaste() {
+  document.querySelectorAll("textarea, input, select").forEach(el => attachAntiPaste(el));
+}
+</script>
+</body>
+</html>
